@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">TripTracker</string>
+    <string name="title_activity_location">LocationActivity</string>
+    <string name="title_activity_memory">MemoryActivity</string>
+</resources>
