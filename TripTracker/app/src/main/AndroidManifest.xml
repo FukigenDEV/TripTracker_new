@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="group1.apps.triptracker">
+    package="nhazeu.apps.triptrackerdesign">
 
     <application
         android:allowBackup="true"
@@ -9,15 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MemoryActivity"
-            android:label="@string/title_activity_memory"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity
-            android:name=".LocationActivity"
-            android:label="@string/title_activity_location"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name="group1.apps.triptracker.MainActivity"></activity>
+        <activity android:name="group1.apps.triptracker.AddMemoryActivity" />
+        <activity android:name="group1.apps.triptracker.AddLocationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
