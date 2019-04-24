@@ -2,4 +2,11 @@
     <string name="app_name">TripTracker</string>
     <string name="title_activity_location">LocationActivity</string>
     <string name="title_activity_memory">MemoryActivity</string>
+    <string name="name_header">NAME</string>
+    <string name="name">Francis of the Filth</string>
+    <string name="location_header">LOCATION</string>
+    <string name="location">Monoxide 12</string>
+    <string name="nationality_header">NATIONALITY</string>
+    <string name="nationality">Ricefieldian</string>
+    <string name="memory_header">MEMORIES</string>
 </resources>

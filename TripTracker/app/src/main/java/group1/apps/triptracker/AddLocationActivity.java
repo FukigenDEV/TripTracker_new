@@ -3,7 +3,7 @@ package group1.apps.triptracker;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import nhazeu.apps.triptrackerdesign.R;
+import group1.apps.triptracker.R;
 
 public class AddLocationActivity extends AppCompatActivity {
 
