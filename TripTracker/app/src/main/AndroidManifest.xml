@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="group1.apps.triptracker.MainActivity" />
+        <activity android:name="group1.apps.triptracker.AddLocationActivity" />
         <activity android:name="group1.apps.triptracker.AddMemoryActivity" />
-        <activity android:name="group1.apps.triptracker.AddLocationActivity">
+        <activity android:name="group1.apps.triptracker.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
