@@ -2,19 +2,15 @@ package group1.apps.triptracker;
 
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends Activity {
 
-    private ImageView btnAddMemory;
     private MemoryDbHelper mMemoryDbHelper;
 
     @Override
@@ -22,11 +18,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAddMemory = findViewById(R.id.btnAddMemory);
-
         mMemoryDbHelper = new MemoryDbHelper(this);
-
-        btnAddMemory.setOnClickListener(getOnClickListener());
 
         insertTestValues();
         retrieveTestValues();
@@ -82,16 +74,5 @@ public class MainActivity extends Activity {
         SQLiteDatabase db = mMemoryDbHelper.getWritableDatabase();
 
         db.execSQL("DELETE FROM " + MemoryContract.MemoryEntry.TABLE_NAME);
-    }
-
-    private View.OnClickListener getOnClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v == btnAddMemory) {
-                    startActivity(new Intent(MainActivity.this, MemoryActivity.class));
-                }
-            }
-        };
     }
 }
