@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (v == btnAddMemory) {
-                    startActivity(new Intent(MainActivity.this, AddMemoryActivity.class));
+                    startActivity(new Intent(MainActivity.this, MemoryActivity.class));
                 }
             }
         };
