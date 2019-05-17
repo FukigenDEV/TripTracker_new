@@ -8,9 +8,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true" >
-        <activity android:name="group1.apps.triptracker.AddLocationActivity"></activity>
+        <activity android:name="group1.apps.triptracker.AddLocationActivity" />
+        <activity android:name="group1.apps.triptracker.MainActivity" android:theme="@android:style/Theme.NoTitleBar" />
+        <activity android:name="group1.apps.triptracker.LocationActivity" />
         <activity android:name="group1.apps.triptracker.AddMemoryActivity" />
-        <activity android:name="group1.apps.triptracker.MainActivity"
+        <activity android:name="group1.apps.triptracker.MemoryActivity"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

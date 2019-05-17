@@ -4,9 +4,15 @@
     <string name="title_activity_memory">MemoryActivity</string>
     <string name="name_header">NAME</string>
     <string name="name">Francis of the Filth</string>
-    <string name="location_header">LOCATION</string>
-    <string name="location">Monoxide 12</string>
-    <string name="nationality_header">NATIONALITY</string>
-    <string name="nationality">Ricefieldian</string>
     <string name="memory_header">MEMORIES</string>
+    <string name="biography_header">BIOGRAPHY</string>
+    <string name="biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a volutpat eros, nec ornare orci. Proin pharetra neque ac nisi interdum, vel aliquet justo iaculis. Nunc dapibus nulla ac urna condimentum porta. Nullam purus ante, interdum at mollis in, finibus ac ante. Proin vel odio purus. Phasellus pharetra sem id lectus euismod lacinia. Aenean placerat arcu ac convallis scelerisque.</string>
+    <string name="am_photo_action_desc">ADD/TAKE PHOTO</string>
+    <string name="am_name_field_header">TITLE</string>
+    <string name="am_text_fields_header">MEMORY</string>
+    <string name="am_location_field_header">LOCATION</string>
+    <string name="am_date_field_header">DATE</string>
+    <string name="date_selected">MM/DD/YYYY</string>
+    <string name="date_button">Select Date</string>
+    <string name="am_story_field_header">STORY</string>
 </resources>

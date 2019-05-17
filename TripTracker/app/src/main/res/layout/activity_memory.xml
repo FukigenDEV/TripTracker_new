@@ -1,97 +1,304 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MemoryActivity">
+    android:background="#b1d8ff">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginBottom="70dp">
 
-        <RelativeLayout
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-            <ImageView
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/layout_add_photo"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:contentDescription="upload_img"
-                android:src="@drawable/ic_sample_img" />
+                android:layout_height="150dp"
+                android:layout_marginTop="30dp"
+                android:background="#FFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        </RelativeLayout>
+                <ImageView
+                    android:id="@+id/camera_icon"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_marginEnd="8dp"
+                    android:src="@drawable/ic_camera_add_memory"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/am_photo_action_desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/camera_icon" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/layout_text_fields"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/layout_add_photo">
+
+                <ImageView
+                    android:id="@+id/text_fields_header_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="36dp"
+                    android:src="@drawable/layout_bg_top_radius"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintTop_toTopOf="@id/layout_text_fields"
+                    app:layout_constraintStart_toStartOf="@id/layout_text_fields"
+                    app:layout_constraintEnd_toEndOf="@id/layout_text_fields" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/am_text_fields_header"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_header_holder"
+                    app:layout_constraintTop_toTopOf="@id/text_fields_header_holder" />
+
+                <ImageView
+                    android:id="@+id/text_fields_holder"
+                    android:layout_width="match_parent"
+                    android:layout_height="580dp"
+                    android:src="@drawable/layout_bg_rect_white"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="32dp"
+                    app:layout_constraintTop_toBottomOf="@id/text_fields_header_holder"
+                    app:layout_constraintStart_toStartOf="@id/layout_text_fields"
+                    app:layout_constraintBottom_toBottomOf="@id/layout_text_fields"
+                    app:layout_constraintEnd_toEndOf="@id/layout_text_fields" />
+
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/am_name_field_header"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toTopOf="@id/text_fields_holder" />
+
+                <EditText
+                    android:id="@+id/name_text_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:inputType="text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toBottomOf="@id/text_name" />
+
+                <TextView
+                    android:id="@+id/text_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/am_location_field_header"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toBottomOf="@id/name_text_input" />
+
+                <EditText
+                    android:id="@+id/location_text_input"
+                    android:layout_height="wrap_content"
+                    android:layout_width="fill_parent"
+                    android:inputType="text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toBottomOf="@id/text_location" />
+
+                <TextView
+                    android:id="@+id/text_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/am_date_field_header"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toBottomOf="@id/location_text_input" />
+
+                <Button
+                    android:id="@+id/tvDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_button"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toBottomOf="@id/text_date" />
+
+                <TextView
+                    android:id="@+id/tvDate_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/date_selected"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintTop_toBottomOf="@id/text_date"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_holder" />
+
+                <TextView
+                    android:id="@+id/text_story"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/am_story_field_header"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toBottomOf="@id/tvDate" />
+
+                <EditText
+                    android:id="@+id/story_text_input"
+                    android:layout_height="210dp"
+                    android:layout_width="fill_parent"
+                    android:inputType="text"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toBottomOf="@id/text_story" />
+
+                <Button
+                    android:id="@+id/button_memory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Post Memory"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/story_text_input"
+                    app:layout_constraintStart_toStartOf="@id/layout_text_fields"
+                    />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_nav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/nav_bg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_height="70dp"
+            android:src="@drawable/layout_bg_rect_l"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-            <TextView
-                android:id="@+id/memoryName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name:" />
+        <ImageView
+            android:id="@+id/nav_bg_1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/layout_bg_rect"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_bg"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg"
+            app:layout_constraintEnd_toStartOf="@id/nav_bg_2" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:labelFor="@+id/memoryName" />
+        <ImageView
+            android:id="@+id/nav_bg_2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/layout_bg_rect"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_bg"
+            app:layout_constraintEnd_toStartOf="@+id/nav_bg_3"
+            app:layout_constraintStart_toEndOf="@+id/nav_bg_1" />
 
-            <TextView
-                android:id="@+id/memoryLocation"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Location:" />
+        <ImageView
+            android:id="@+id/nav_bg_3"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/layout_bg_rect"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nav_bg_4"
+            app:layout_constraintStart_toEndOf="@+id/nav_bg_2" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:labelFor="@+id/memoryLocation" />
+        <ImageView
+            android:id="@+id/nav_bg_4"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/layout_bg_rect"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_bg"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg"
+            app:layout_constraintStart_toEndOf="@id/nav_bg_3" />
 
-            <TextView
-                android:id="@+id/memoryDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date:" />
+        <ImageView
+            android:id="@+id/nav_icon_map"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_maps"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg_1"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg_1"
+            app:layout_constraintTop_toTopOf="@+id/nav_bg_1" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="date"
-                android:labelFor="@+id/memoryDate" />
+        <ImageView
+            android:id="@+id/nav_icon_timeline"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_menu_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg_2"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg_2"
+            app:layout_constraintTop_toTopOf="@+id/nav_bg_2" />
 
-            <TextView
-                android:id="@+id/memoryDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description:" />
+        <ImageView
+            android:id="@+id/nav_icon_camera"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/ic_photo_camera_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg_3"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg_3"
+            app:layout_constraintTop_toTopOf="@+id/nav_bg_3" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:inputType="text"
-                android:labelFor="@+id/memoryDescription" />
+        <ImageView
+            android:id="@+id/nav_icon_profile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_person_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg_4"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg_4"
+            app:layout_constraintTop_toTopOf="@+id/nav_bg_4" />
 
-        </LinearLayout>
+    </android.support.constraint.ConstraintLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp">
-
-            <TextView
-                android:id="@+id/memoryAdd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:text="Add memory" />
-
-        </RelativeLayout>
-
-    </LinearLayout>
-
-</ScrollView>
+</android.support.constraint.ConstraintLayout>
