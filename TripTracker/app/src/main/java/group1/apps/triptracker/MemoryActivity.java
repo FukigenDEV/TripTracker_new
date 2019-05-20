@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 public class MemoryActivity extends Activity {
@@ -15,6 +16,7 @@ public class MemoryActivity extends Activity {
     private ImageView navMemory;
     private ImageView navCamera;
     private ImageView navProfile;
+    private Button mscAddMemory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,14 @@ public class MemoryActivity extends Activity {
                 openProfile();
             }
         });
+
+        mscAddMemory = (Button) findViewById(R.id.button_new_memory);
+        mscAddMemory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddMemory();
+            }
+        });
     }
 
     public void openMap() {
@@ -71,6 +81,11 @@ public class MemoryActivity extends Activity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    public void openAddMemory() {
+        Intent intent = new Intent(this, AddMemoryActivity.class);
+        startActivity(intent);
     }
 
 }

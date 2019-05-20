@@ -2,6 +2,7 @@ package group1.apps.triptracker;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +16,7 @@ public class MainActivity extends Activity {
     private ImageView navMemory;
     private ImageView navCamera;
     private ImageView navProfile;
+    private ImageView mscAddMemory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,14 @@ public class MainActivity extends Activity {
                 openProfile();
             }
         });
+
+        mscAddMemory = (ImageView) findViewById(R.id.pf_memory_add);
+        mscAddMemory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddMemory();
+            }
+        });
     }
 
     public void openMap() {
@@ -71,6 +81,11 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    public void openAddMemory() {
+        Intent intent = new Intent(this, AddMemoryActivity.class);
+        startActivity(intent);
     }
 
 }

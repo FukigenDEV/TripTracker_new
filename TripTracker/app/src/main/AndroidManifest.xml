@@ -11,7 +11,7 @@
         <activity android:name="group1.apps.triptracker.AddLocationActivity" />
         <activity android:name="group1.apps.triptracker.MainActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name="group1.apps.triptracker.LocationActivity" />
-        <activity android:name="group1.apps.triptracker.AddMemoryActivity" />
+        <activity android:name="group1.apps.triptracker.AddMemoryActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name="group1.apps.triptracker.MemoryActivity"
             android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>

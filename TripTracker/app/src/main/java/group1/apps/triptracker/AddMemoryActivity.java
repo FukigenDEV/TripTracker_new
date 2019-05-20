@@ -21,6 +21,7 @@ public class AddMemoryActivity extends Activity {
 
     private static final String TAG = "AddMemoryActivity";
 
+//    variables voor set date dialog
     private Button mDisplayDate;
     private TextView mTextDate;
     private DatePickerDialog.OnDateSetListener mDateSetListener;
@@ -31,6 +32,7 @@ public class AddMemoryActivity extends Activity {
     private ImageView navCamera;
     private ImageView navProfile;
 
+//    code voor set date dialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

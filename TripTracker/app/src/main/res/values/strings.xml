@@ -15,4 +15,6 @@
     <string name="date_selected">MM/DD/YYYY</string>
     <string name="date_button">Select Date</string>
     <string name="am_story_field_header">STORY</string>
+    <string name="m_memories_header">MEMORIES</string>
+    <string name="m_new_memory">NEW MEMORY</string>
 </resources>
