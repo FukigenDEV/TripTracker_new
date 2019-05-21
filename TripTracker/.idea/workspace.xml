@@ -20,28 +20,12 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8b507766-e1ab-4cb9-87e9-cb8fe36cf5ba" name="Default Changelist" comment="All important pages are done.">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_livedata_core_1_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_1_0_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_constraint_constraint_layout_1_1_3_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_design_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_recyclerview_v7_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_vector_drawable_27_1_1_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_core_3_0_2_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_espresso_espresso_idling_resource_3_0_2_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_monitor_1_0_2_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_test_runner_1_0_2_aar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_transition_27_1_1_aar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="8b507766-e1ab-4cb9-87e9-cb8fe36cf5ba" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MapsActivityCurrentPlace.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MapsActivityCurrentPlace.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -64,49 +48,100 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_memory.xml">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="1515">
-              <caret line="101" column="31" selection-start-line="101" selection-start-column="31" selection-end-line="101" selection-end-column="31" />
+            <state relative-caret-position="279">
+              <caret line="35" column="45" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="63" />
             </state>
           </provider>
           <provider selected="true" editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_memory.xml">
-          <provider editor-type-id="text-editor">
-            <state relative-caret-position="951">
-              <caret line="429" column="33" selection-start-line="429" selection-start-column="33" selection-end-line="429" selection-end-column="33" />
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-477">
+              <caret column="6" selection-end-column="32" />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MapsActivityCurrentPlace.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="20" column="58" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="60" />
+              <folding>
+                <element signature="e#4358#4359#0" expanded="true" />
+                <element signature="e#4401#4402#0" expanded="true" />
+                <element signature="e#5342#6353#0" expanded="true" />
+                <element signature="e#6352#6353#0" expanded="true" />
+                <element signature="e#8018#10203#0" expanded="true" />
+                <element signature="e#10202#10203#0" expanded="true" />
+                <element signature="e#10676#11466#0" expanded="true" />
+                <element signature="e#11465#11466#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_memory.xml">
+        <entry file="file://$PROJECT_DIR$/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2970">
-              <caret line="198" column="5" selection-start-line="198" selection-start-column="4" selection-end-line="301" selection-end-column="50" />
+            <state relative-caret-position="288">
+              <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-manifest" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/settings.gradle">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/layout_bg_rect.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_camera_add_memory.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="8" selection-end-line="8" selection-end-column="8" />
+            <state relative-caret-position="135">
+              <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/layout_bg_rect_white.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_photo_camera_black_24dp.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="30" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+            <state relative-caret-position="75">
+              <caret line="5" column="9" selection-end-line="11" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -150,7 +185,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/LocationActivity.java" />
-        <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/pf_pic.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/rounded_img.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/AddLocationActivity.java" />
@@ -168,7 +202,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/layout_bg_top_radius.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/layout_bg.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/layout_memory_preview.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_camera_add_memory.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/layout_bg_rect_white.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_add_memory.xml" />
@@ -177,7 +210,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_camera_add_memory.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MapsActivityCurrentPlace.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/app/build.gradle" />
       </list>
     </option>
   </component>
@@ -205,19 +242,33 @@
             <path>
               <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+            </path>
+            <path>
+              <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+            </path>
+            <path>
+              <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+              <item name="triptracker" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
               <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
@@ -227,9 +278,9 @@
   </component>
   <component name="PropertiesComponent">
     <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
-    <property name="device.picker.selection" value="LGH930f80b2ec0" />
+    <property name="device.picker.selection" value="Pixel_2_XL_API_28" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="sync.plugin.last.upgrade.timestamp" value="1558084338570" />
   </component>
   <component name="RunDashboard">
@@ -385,7 +436,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558424608944</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="All important pages are done.">
+      <created>1558424980775</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1558424980775</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView">
@@ -415,7 +473,7 @@
       <window_info anchor="bottom" id="TODO" order="3" weight="0.3299363" />
       <window_info anchor="bottom" id="Android Profiler" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="5" weight="0.32866243" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50143063" side_tool="true" visible="true" weight="0.3057325" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.50143063" side_tool="true" weight="0.3057325" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.33248407" />
       <window_info active="true" anchor="bottom" id="Build" order="8" sideWeight="0.4985694" visible="true" weight="0.3057325" />
       <window_info active="true" anchor="bottom" id="Messages" order="9" visible="true" weight="0.32917964" />
@@ -462,20 +520,13 @@
     <MESSAGE value="test" />
     <MESSAGE value="I'm sorry boys, I tried my hardest!" />
     <MESSAGE value="AddMemory and Profil (mainactivity) are pretty much done, memoryactivity&#10;will be added later today." />
-    <MESSAGE value="All important pages are done." />
     <MESSAGE value="Add missing drawable files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add missing drawable files" />
+    <MESSAGE value="All important pages are done." />
+    <option name="LAST_COMMIT_MESSAGE" value="All important pages are done." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/beach.jpeg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/mipmap-hdpi/pf_pic_1.png" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/pf_pic_2.xml" />
@@ -611,18 +662,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_camera_add_memory.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="85" column="4" selection-start-line="85" selection-start-column="4" selection-end-line="88" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -633,25 +676,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="11" lean-forward="true" selection-start-line="24" selection-start-column="11" selection-end-line="24" selection-end-column="11" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-manifest" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_person_black_24dp.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_photo_camera_black_24dp.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -685,13 +713,84 @@
       </provider>
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_memory.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_photo_camera_black_24dp.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="198" column="5" selection-start-line="198" selection-start-column="4" selection-end-line="301" selection-end-column="50" />
+        <state relative-caret-position="75">
+          <caret line="5" column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_camera_add_memory.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="31" selection-start-line="9" selection-start-column="31" selection-end-line="9" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_add_memory.xml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="35" column="45" selection-start-line="35" selection-start-column="43" selection-end-line="35" selection-end-column="63" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-477">
+          <caret column="6" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="20" column="9" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="53" selection-start-line="19" selection-start-column="53" selection-end-line="19" selection-end-column="53" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MapsActivityCurrentPlace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="20" column="58" selection-start-line="20" selection-start-column="7" selection-end-line="20" selection-end-column="60" />
+          <folding>
+            <element signature="e#4358#4359#0" expanded="true" />
+            <element signature="e#4401#4402#0" expanded="true" />
+            <element signature="e#5342#6353#0" expanded="true" />
+            <element signature="e#6352#6353#0" expanded="true" />
+            <element signature="e#8018#10203#0" expanded="true" />
+            <element signature="e#10202#10203#0" expanded="true" />
+            <element signature="e#10676#11466#0" expanded="true" />
+            <element signature="e#11465#11466#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="34" column="60" selection-start-line="34" selection-start-column="60" selection-end-line="34" selection-end-column="60" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

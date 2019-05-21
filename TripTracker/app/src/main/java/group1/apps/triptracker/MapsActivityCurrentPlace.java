@@ -1,4 +1,4 @@
-package com.example.currentplacedetailsonmap;
+package group1.apps.triptracker;
 
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
