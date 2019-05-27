@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Gradle: :maps-sdk-3.0.0-beta:@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/212360f237571bdb673a69e8a6830ebb/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/212360f237571bdb673a69e8a6830ebb/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
