@@ -2,18 +2,19 @@ package group1.apps.triptracker;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.Image;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-
-import java.util.ArrayList;
-import java.util.List;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
 
+    private ImageView pf_settings;
+    private TextView pf_name;
+    private TextView pf_biography;
     private ImageView navMap;
     private ImageView navMemory;
     private ImageView navCamera;
@@ -65,6 +66,26 @@ public class MainActivity extends Activity {
                 openAddMemory();
             }
         });
+
+        pf_settings = findViewById(R.id.pf_settings);
+        pf_settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openChangeProfile();
+            }
+        });
+
+        pf_name = findViewById(R.id.pf_name);
+        pf_biography = findViewById(R.id.pf_biography);
+
+        updateProfileInfo();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        updateProfileInfo();
     }
 
     public void openMap() {
@@ -93,4 +114,17 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    public void openChangeProfile() {
+        Intent intent = new Intent(this, ChangeProfileActivity.class);
+        startActivity(intent);
+    }
+
+    public void updateProfileInfo() {
+        SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
+        String name = sharedPreferences.getString(getString(R.string.profile_name), "Name");
+        String biography = sharedPreferences.getString(getString(R.string.profile_biography), "Biography");
+
+        pf_name.setText(name);
+        pf_biography.setText(biography);
+    }
 }

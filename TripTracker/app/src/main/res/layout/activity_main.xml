@@ -111,7 +111,7 @@
             app:layout_constraintEnd_toEndOf="@id/layout_user_info">
 
             <TextView
-                android:id="@+id/pf_location"
+                android:id="@+id/pf_biography"
                 android:layout_width="fill_parent"
                 android:layout_height="100dp"
                 android:layout_marginStart="8dp"
