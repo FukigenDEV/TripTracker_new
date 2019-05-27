@@ -66,6 +66,9 @@ public class MemoryActivity extends Activity {
     }
 
     public void openMap() {
+        Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
+        startActivity(intent);
+        this.finish();
     }
 
     public void openMemory() {

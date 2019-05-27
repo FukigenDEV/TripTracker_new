@@ -90,6 +90,8 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Retrieve the content view that renders the map.
+        setContentView(R.layout.activity_maps);
 
         //        Hier begint de code voor het starten van nieuwe activiteit onClick
         navMap = (ImageView) findViewById(R.id.nav_bg_1);
@@ -129,9 +131,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
-
-        // Retrieve the content view that renders the map.
-        setContentView(R.layout.activity_maps);
 
         String apiKey = getString(R.string.google_maps_key);
 
