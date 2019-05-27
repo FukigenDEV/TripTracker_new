@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_map"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/layout_menu">
+
+        <fragment xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/map"
+            android:name="com.google.android.libraries.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="group1.apps.triptracker.MapsActivityCurrentPlace" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_menu"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/nav_bg"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:src="@drawable/layout_bg_rect_l"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/nav_bg_1"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/layout_bg_rect"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_bg"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg"
+            app:layout_constraintEnd_toStartOf="@id/nav_bg_2" />
+
+        <ImageView
+            android:id="@+id/nav_bg_2"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="4dp"
+            android:src="@drawable/layout_bg_rect"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_bg"
+            app:layout_constraintEnd_toStartOf="@+id/nav_bg_3"
+            app:layout_constraintStart_toEndOf="@+id/nav_bg_1" />
+
+        <ImageView
+            android:id="@+id/nav_bg_3"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginStart="4dp"
+            android:src="@drawable/layout_bg_rect"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/nav_bg_4"
+            app:layout_constraintStart_toEndOf="@+id/nav_bg_2" />
+
+        <ImageView
+            android:id="@+id/nav_bg_4"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/layout_bg_rect"
+            app:layout_constraintBottom_toBottomOf="@+id/nav_bg"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg"
+            app:layout_constraintStart_toEndOf="@id/nav_bg_3" />
+
+        <ImageView
+            android:id="@+id/nav_icon_map"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="15dp"
+            android:src="@drawable/ic_maps"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg_1"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg_1"
+            app:layout_constraintTop_toTopOf="@+id/nav_bg_1" />
+
+        <ImageView
+            android:id="@+id/nav_icon_timeline"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/ic_menu_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg_2"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg_2"
+            app:layout_constraintTop_toTopOf="@+id/nav_bg_2" />
+
+        <ImageView
+            android:id="@+id/nav_icon_camera"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/ic_photo_camera_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg_3"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg_3"
+            app:layout_constraintTop_toTopOf="@+id/nav_bg_3" />
+
+        <ImageView
+            android:id="@+id/nav_icon_profile"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/ic_person_black_24dp"
+            app:layout_constraintEnd_toEndOf="@+id/nav_bg_4"
+            app:layout_constraintStart_toStartOf="@+id/nav_bg_4"
+            app:layout_constraintTop_toTopOf="@+id/nav_bg_4" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
