@@ -1,6 +1,7 @@
 package group1.apps.triptracker;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -63,7 +64,9 @@ public class ChangeProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (view == btnChangeProfile) {
                     saveProfile();
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                 }
             }
         };
