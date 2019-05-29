@@ -29,4 +29,5 @@
     <string name="title_activity_change_profile">Change profile</string>
     <string name="profile_name">profile_name_key</string>
     <string name="profile_biography">profile_biography_key</string>
+    <string name="cp_text_fields_header">EDIT PROFILE</string>
 </resources>

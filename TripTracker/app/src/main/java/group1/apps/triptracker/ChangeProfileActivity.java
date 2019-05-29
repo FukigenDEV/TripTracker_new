@@ -25,7 +25,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
         imvPhoto = findViewById(R.id.imvPhoto);
         etName = findViewById(R.id.etName);
         etBiography = findViewById(R.id.etBiography);
-        imvLocation = findViewById(R.id.imvLocation);
         btnChangeProfile = findViewById(R.id.btnChangeProfile);
 
         btnChangeProfile.setOnClickListener(getOnClickListener());

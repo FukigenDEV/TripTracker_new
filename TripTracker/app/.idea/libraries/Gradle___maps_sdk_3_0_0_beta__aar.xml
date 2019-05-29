@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: :maps-sdk-3.0.0-beta:@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7e1adc77f0ada66fe44d296a5132540f/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/7e1adc77f0ada66fe44d296a5132540f/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/212360f237571bdb673a69e8a6830ebb/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/212360f237571bdb673a69e8a6830ebb/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
