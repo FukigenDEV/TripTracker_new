@@ -90,6 +90,7 @@ public class MainActivity extends Activity {
 
     public void openMap() {
         Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
         this.finish();
     }

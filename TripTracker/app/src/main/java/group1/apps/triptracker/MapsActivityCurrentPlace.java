@@ -132,7 +132,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
             mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
 
-        String apiKey = getString(R.string.google_maps_key);
+        String apiKey = "AIzaSyAfij6k_x-sHMVdw2G5jTnUsxLws-PyoGM";
 
         // Initialize Places.
         Places.initialize(context, apiKey);
@@ -151,14 +151,13 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
     public void openMap() {
         Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
-        this.finish();
     }
 
     public void openMemory() {
         Intent intent = new Intent(this, MemoryActivity.class);
         startActivity(intent);
-        this.finish();
     }
 
     public void openCamera() {
@@ -167,7 +166,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
     public void openProfile() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-        this.finish();
     }
 
     /**

@@ -19,7 +19,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC4wdxdzQ2FZKgQweG5-lnKObTk8nz2buY" />
+            android:value="AIzaSyAfij6k_x-sHMVdw2G5jTnUsxLws-PyoGM" />
 
         <activity android:name="group1.apps.triptracker.MainActivity" android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name="group1.apps.triptracker.LocationActivity" />
@@ -29,14 +29,6 @@
             android:name=".ChangeProfileActivity"
             android:label="@string/title_activity_change_profile"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-
-        <meta-data
-            android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <!--              The API key for Google Maps-based APIs. -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyC4wdxdzQ2FZKgQweG5-lnKObTk8nz2buY" />
 
         <activity
             android:name=".MapsActivityCurrentPlace"
