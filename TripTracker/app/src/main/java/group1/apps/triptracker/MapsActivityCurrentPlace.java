@@ -248,6 +248,11 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+
+        //MARKER ZETTEN
+        Marker marker = map.addMarker(new MarkerOptions()
+                .position(new LatLng(52.019100, 4.429700))
+                .title("DIT IS DE TITLE VAN DE MARKER"));
     }
 
     /**
