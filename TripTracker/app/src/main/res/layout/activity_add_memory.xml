@@ -121,15 +121,26 @@
                     app:layout_constraintStart_toStartOf="@id/text_fields_holder"
                     app:layout_constraintTop_toBottomOf="@id/name_text_input" />
 
-                <EditText
-                    android:id="@+id/location_text_input"
+                <TextView
+                    android:id="@+id/text_location_gps"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="fill_parent"
-                    android:inputType="text"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
+                    android:text="@string/am_gps_location"
                     app:layout_constraintStart_toStartOf="@id/text_fields_holder"
-                    app:layout_constraintTop_toBottomOf="@id/text_location" />
+                    app:layout_constraintTop_toBottomOf="@id/text_location"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginStart="8dp"
+                    />
+
+                <Button
+                    android:id="@+id/button_gps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="GPS"
+                    android:layout_marginEnd="8dp"
+                    app:layout_constraintEnd_toEndOf="@id/text_fields_holder"
+                    app:layout_constraintTop_toBottomOf="@id/text_location"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/text_date"
@@ -139,7 +150,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="8dp"
                     app:layout_constraintStart_toStartOf="@id/text_fields_holder"
-                    app:layout_constraintTop_toBottomOf="@id/location_text_input" />
+                    app:layout_constraintTop_toBottomOf="@id/text_location_gps" />
 
                 <Button
                     android:id="@+id/tvDate"
