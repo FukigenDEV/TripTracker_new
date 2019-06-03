@@ -16,7 +16,9 @@ public class MemoryActivity extends Activity {
     private ImageView navMemory;
     private ImageView navCamera;
     private ImageView navProfile;
+
     private Button mscAddMemory;
+    private ImageView mscShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,14 @@ public class MemoryActivity extends Activity {
                 openAddMemory();
             }
         });
+
+        mscShare = (ImageView) findViewById(R.id.memory_share_1);
+        mscShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doShare();
+            }
+        });
     }
 
     public void openMap() {
@@ -91,4 +101,11 @@ public class MemoryActivity extends Activity {
         startActivity(intent);
     }
 
+    public void doShare() {
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+        sendIntent.setType("text/plain");
+        startActivity(sendIntent);
+    }
 }

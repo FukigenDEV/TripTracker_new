@@ -81,6 +81,16 @@
                     app:layout_constraintEnd_toStartOf="@id/layout_memory_holder_1"
                     tools:srcCompat="@tools:sample/avatars" />
 
+                <ImageView
+                    android:id="@+id/memory_share_1"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_share"
+                    app:layout_constraintTop_toTopOf="@id/memory_holder_1"
+                    app:layout_constraintStart_toStartOf="@id/memory_holder_1"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp" />
+
                 <android.support.constraint.ConstraintLayout
                     android:id="@+id/layout_memory_holder_1"
                     android:layout_width="0dp"
