@@ -9,12 +9,13 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity {
 
     private static final String TAG = "MainActivity";
 
@@ -24,49 +25,12 @@ public class MainActivity extends Activity {
     private ImageView pf_settings;
     private TextView pf_name;
     private TextView pf_biography;
-    private ImageView navMap;
-    private ImageView navMemory;
-    private ImageView navCamera;
-    private ImageView navProfile;
     private ImageView mscAddMemory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //        Hier begint de code voor het starten van nieuwe activiteit onClick
-        navMap = (ImageView) findViewById(R.id.nav_bg_1);
-        navMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMap();
-            }
-        });
-
-        navMemory = (ImageView) findViewById(R.id.nav_bg_2);
-        navMemory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMemory();
-            }
-        });
-
-        navCamera = (ImageView) findViewById(R.id.nav_bg_3);
-        navCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                askCameraPermission();
-            }
-        });
-
-        navProfile = (ImageView) findViewById(R.id.nav_bg_4);
-        navProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openProfile();
-            }
-        });
 
         mscAddMemory = (ImageView) findViewById(R.id.pf_memory_add);
         mscAddMemory.setOnClickListener(new View.OnClickListener() {
@@ -95,18 +59,6 @@ public class MainActivity extends Activity {
         super.onResume();
 
         updateProfileInfo();
-    }
-
-    public void openMap() {
-        Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
-        startActivity(intent);
-        this.finish();
-    }
-
-    public void openMemory() {
-        Intent intent = new Intent(this, MemoryActivity.class);
-        startActivity(intent);
-        this.finish();
     }
 
     private void askCameraPermission() {
@@ -149,12 +101,6 @@ public class MainActivity extends Activity {
                 startActivity(addMemoryIntent);
             }
         }
-    }
-
-    public void openProfile() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        this.finish();
     }
 
     public void openAddMemory() {

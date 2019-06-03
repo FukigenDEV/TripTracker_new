@@ -30,4 +30,7 @@
     <string name="profile_name">profile_name_key</string>
     <string name="profile_biography">profile_biography_key</string>
     <string name="cp_text_fields_header">EDIT PROFILE</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

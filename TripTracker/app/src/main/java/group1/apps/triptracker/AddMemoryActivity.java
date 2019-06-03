@@ -1,6 +1,5 @@
 package group1.apps.triptracker;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -10,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +23,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
-public class AddMemoryActivity extends Activity {
+public class AddMemoryActivity extends FragmentActivity {
 
     private static final String TAG = "AddMemoryActivity";
 
@@ -41,11 +41,6 @@ public class AddMemoryActivity extends Activity {
     private EditText locationText_Input;
     private EditText storyTextInput;
 
-    //    variables voor navigatiebalk
-    private ImageView navMap;
-    private ImageView navMemory;
-    private ImageView navCamera;
-    private ImageView navProfile;
     private Button buttonAddMemory;
 
     private Bitmap thumbnail;
@@ -95,39 +90,6 @@ public class AddMemoryActivity extends Activity {
                 mTextDate.setText(date);
             }
         };
-
-//        Hier begint de code voor het starten van nieuwe activiteit onClick
-        navMap = (ImageView) findViewById(R.id.nav_bg_1);
-        navMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMap();
-            }
-        });
-
-        navMemory = (ImageView) findViewById(R.id.nav_bg_2);
-        navMemory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openMemory();
-            }
-        });
-
-        navCamera = (ImageView) findViewById(R.id.nav_bg_3);
-        navCamera.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openCamera();
-            }
-        });
-
-        navProfile = (ImageView) findViewById(R.id.nav_bg_4);
-        navProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openProfile();
-            }
-        });
 
         buttonAddMemory = (Button) findViewById(R.id.button_add_memory);
         buttonAddMemory.setOnClickListener(new View.OnClickListener() {
