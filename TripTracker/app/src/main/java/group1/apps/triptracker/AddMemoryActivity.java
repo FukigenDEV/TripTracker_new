@@ -106,32 +106,19 @@ public class AddMemoryActivity extends FragmentActivity {
         mLayoutAddPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(AddMemoryActivity.this, CameraActivity.class));
             }
         });
 
         displayThumbnail();
     }
 
-    public void openMap() {
-        Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
-        startActivity(intent);
-        this.finish();
-    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
-    public void openMemory() {
-        Intent intent = new Intent(this, MemoryActivity.class);
-        startActivity(intent);
-        this.finish();
-    }
-
-    public void openCamera() {
-    }
-
-    public void openProfile() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        this.finish();
+        finish();
+        startActivity(new Intent(AddMemoryActivity.this, MainActivity.class));
     }
 
     private void displayThumbnail() {

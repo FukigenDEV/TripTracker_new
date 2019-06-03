@@ -4,11 +4,12 @@ import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 public class CameraActivity extends AppCompatActivity {
 
@@ -62,6 +63,29 @@ public class CameraActivity extends AppCompatActivity {
 
                 startActivity(addMemoryIntent);
             }
+        } else if (resultCode == RESULT_CANCELED) {
+            finish();
+            startActivity(new Intent(CameraActivity.this, MainActivity.class));
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CAMERA) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openCamera();
+            } else {
+                finish();
+                startActivity(new Intent(CameraActivity.this, MainActivity.class));
+            }
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        finish();
+        startActivity(new Intent(CameraActivity.this, MainActivity.class));
     }
 }
