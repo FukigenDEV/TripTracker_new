@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:id="@+id/layout_memory_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/memory_holder_1"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:src="@drawable/layout_bg_rect_white"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/memory_photo_1"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintTop_toTopOf="@id/memory_holder_1"
+        app:layout_constraintBottom_toBottomOf="@id/memory_holder_1"
+        app:layout_constraintStart_toStartOf="@id/memory_holder_1"
+        app:layout_constraintEnd_toStartOf="@id/layout_memory_holder_1"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/layout_memory_holder_1"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        app:layout_constraintHorizontal_weight="2"
+        app:layout_constraintTop_toTopOf="@id/memory_holder_1"
+        app:layout_constraintEnd_toEndOf="@id/memory_holder_1"
+        app:layout_constraintStart_toEndOf="@id/memory_photo_1">
+
+        <TextView
+            android:id="@+id/memory_title_1"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            tools:ignore="HardcodedText"
+            android:layout_marginStart="8dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="88dp"
+            app:layout_constraintTop_toBottomOf="@id/memory_title_1"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/memory_description_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="Suspendisse sed odio ultrices nulla ultrices ullamcorper. Morbi ut bibendum nunc, eu lacinia ante. Vestibulum venenatis diam vel justo malesuada sagittis. Nam semper maximus augue, sit amet eleifend quam ultrices a. Suspendisse pellentesque hendrerit purus, sit amet consequat enim mattis non. Fusce maximus finibus volutpat. Sed sed nunc nec urna mollis euismod ut sed sem. Vestibulum id lectus sed sem suscipit vestibulum eget pellentesque nibh. Etiam libero urna, convallis a elementum a, lacinia sit amet velit. Ut scelerisque est tellus, non mattis sapien feugiat eu."
+                tools:ignore="HardcodedText"
+                android:layout_marginStart="8dp"
+                />
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -23,7 +23,7 @@ public final class MemoryContract {
                     MemoryEntry.COLUMN_NAME_TITLE + " TEXT," +
                     MemoryEntry.COLUMN_NAME_DESCRIPTION + " TEXT," +
                     MemoryEntry.COLUMN_NAME_DATE_ADDED + " TEXT," +
-                    MemoryEntry.COLUMN_NAME_IMAGE + " TEXT," +
+                    MemoryEntry.COLUMN_NAME_IMAGE + " BLOB," +
                     MemoryEntry.COLUMN_NAME_LOCATION + " TEXT)";
 
     public static final String SQL_DELETE_MEMORIES =

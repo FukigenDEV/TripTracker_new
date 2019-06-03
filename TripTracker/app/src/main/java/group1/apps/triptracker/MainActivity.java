@@ -1,9 +1,15 @@
 package group1.apps.triptracker;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +17,9 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 
     private static final String TAG = "MainActivity";
+
+    private static final int REQUEST_CAMERA = 1;
+    private static final int REQUEST_TAKE_PHOTO = 2;
 
     private ImageView pf_settings;
     private TextView pf_name;
@@ -47,7 +56,7 @@ public class MainActivity extends Activity {
         navCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCamera();
+                askCameraPermission();
             }
         });
 
@@ -100,7 +109,46 @@ public class MainActivity extends Activity {
         this.finish();
     }
 
-    public void openCamera() {
+    private void askCameraPermission() {
+        // if the permission is denied
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED) {
+            // ask camera permission
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA);
+            // if the permission is granted
+        } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            // open camera
+            openCamera();
+        }
+    }
+
+    private void openCamera() {
+        // if the permission is granted
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+            // get a camera intent
+            Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+            // if a camera activity is available
+            if (cameraIntent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(cameraIntent, REQUEST_TAKE_PHOTO);
+            }
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_TAKE_PHOTO && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+
+            if (extras != null) {
+                // get the image that was taken
+                Bitmap imageThumbnail = (Bitmap) extras.get("data");
+
+                Intent addMemoryIntent = new Intent(MainActivity.this, AddMemoryActivity.class);
+                addMemoryIntent.putExtra("image_thumbnail", imageThumbnail);
+
+                startActivity(addMemoryIntent);
+            }
+        }
     }
 
     public void openProfile() {

@@ -2,16 +2,22 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="group1.apps.triptracker">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true" >
-		
-		<meta-data
+        android:supportsRtl="true">
+
+        <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
         <!--
@@ -21,10 +27,16 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC4wdxdzQ2FZKgQweG5-lnKObTk8nz2buY" />
 
-        <activity android:name="group1.apps.triptracker.MainActivity" android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="group1.apps.triptracker.MainActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
         <activity android:name="group1.apps.triptracker.LocationActivity" />
-        <activity android:name="group1.apps.triptracker.AddMemoryActivity" android:theme="@android:style/Theme.NoTitleBar" />
-        <activity android:name="group1.apps.triptracker.MemoryActivity" android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="group1.apps.triptracker.AddMemoryActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="group1.apps.triptracker.MemoryActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name=".ChangeProfileActivity"
             android:label="@string/title_activity_change_profile"
@@ -47,6 +59,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.android.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"></meta-data>
+        </provider>
+    </application>
 </manifest>
