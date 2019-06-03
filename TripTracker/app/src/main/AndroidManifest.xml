@@ -20,32 +20,32 @@
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-        <!--
-             The API key for Google Maps-based APIs.
-        -->
+        <!--              The API key for Google Maps-based APIs. -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC4wdxdzQ2FZKgQweG5-lnKObTk8nz2buY" />
 
         <activity
-            android:name="group1.apps.triptracker.MainActivity"
+            android:name=".MainActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
-        <activity android:name="group1.apps.triptracker.LocationActivity" />
+        <activity android:name=".LocationActivity" />
         <activity
-            android:name="group1.apps.triptracker.AddMemoryActivity"
+            android:name=".AddMemoryActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="group1.apps.triptracker.MemoryActivity"
+            android:name=".MemoryActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
             android:name=".ChangeProfileActivity"
             android:label="@string/title_activity_change_profile"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CameraActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
-        <!--              The API key for Google Maps-based APIs. -->
+            android:value="@integer/google_play_services_version" /> <!-- The API key for Google Maps-based APIs. -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyC4wdxdzQ2FZKgQweG5-lnKObTk8nz2buY" />
@@ -67,7 +67,8 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"></meta-data>
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
+
 </manifest>

@@ -80,7 +80,9 @@ public class NavbarFragment extends Fragment {
     }
 
     public void openCamera() {
+        startActivity(new Intent(activity, CameraActivity.class));
 
+        activity.finish();
     }
 
     public void openProfile() {

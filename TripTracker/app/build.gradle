@@ -45,8 +45,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:+'
 
     // Dependencies for the Maps SDK v3.0 beta
-    implementation name:'maps-sdk-3.0.0-beta', ext:'aar'
-    implementation name:'places-maps-sdk-3.0.0-beta', ext:'aar'
+    implementation name: 'maps-sdk-3.0.0-beta', ext: 'aar'
+    implementation name: 'places-maps-sdk-3.0.0-beta', ext: 'aar'
     implementation 'com.google.android.gms:play-services-basement:15.0.1'
     implementation 'com.google.android.gms:play-services-base:15.0.1'
     implementation 'com.google.android.gms:play-services-gcm:15.0.1'
@@ -69,6 +69,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:+'
 }
 
 dependencies {
