@@ -93,7 +93,7 @@
                 <ImageView
                     android:id="@+id/text_fields_holder"
                     android:layout_width="match_parent"
-                    android:layout_height="580dp"
+                    android:layout_height="480dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="32dp"
@@ -124,55 +124,6 @@
                     app:layout_constraintTop_toBottomOf="@id/text_name" />
 
                 <TextView
-                    android:id="@+id/text_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/am_location_field_header"
-                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
-                    app:layout_constraintTop_toBottomOf="@id/name_text_input" />
-
-                <EditText
-                    android:id="@+id/location_text_input"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:inputType="text"
-                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
-                    app:layout_constraintTop_toBottomOf="@id/text_location" />
-
-                <TextView
-                    android:id="@+id/text_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/am_date_field_header"
-                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
-                    app:layout_constraintTop_toBottomOf="@id/location_text_input" />
-
-                <Button
-                    android:id="@+id/tvDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/date_button"
-                    app:layout_constraintEnd_toEndOf="@id/text_fields_holder"
-                    app:layout_constraintTop_toBottomOf="@id/text_date" />
-
-                <TextView
-                    android:id="@+id/tvDate_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/date_selected"
-                    app:layout_constraintStart_toStartOf="@id/text_fields_holder"
-                    app:layout_constraintTop_toBottomOf="@id/text_date" />
-
-                <TextView
                     android:id="@+id/text_story"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -180,7 +131,7 @@
                     android:layout_marginTop="16dp"
                     android:text="@string/am_story_field_header"
                     app:layout_constraintStart_toStartOf="@id/text_fields_holder"
-                    app:layout_constraintTop_toBottomOf="@id/tvDate" />
+                    app:layout_constraintTop_toBottomOf="@id/name_text_input" />
 
                 <EditText
                     android:id="@+id/story_text_input"

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
@@ -19,6 +20,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Calendar;
@@ -30,20 +35,19 @@ public class AddMemoryActivity extends FragmentActivity {
     private MemoryDbHelper dbHelper = new MemoryDbHelper(this);
 
     //    variables voor set date dialog
-    private Button mDisplayDate;
-    private TextView mTextDate;
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
     private ImageView mThumbnail;
     private ConstraintLayout mLayoutImageThumbnail;
     private ConstraintLayout mLayoutAddPhoto;
 
     private EditText nameTextInput;
-    private EditText locationText_Input;
     private EditText storyTextInput;
 
     private Button buttonAddMemory;
 
     private Bitmap thumbnail;
+
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private Location currentLocation;
 
     //    code voor set date dialog
     @Override
@@ -51,45 +55,15 @@ public class AddMemoryActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_memory);
 
-        mDisplayDate = (Button) findViewById(R.id.tvDate);
-        mTextDate = (TextView) findViewById(R.id.tvDate_text);
         mThumbnail = (ImageView) findViewById(R.id.image_thumbnail);
         mLayoutImageThumbnail = (ConstraintLayout) findViewById(R.id.layout_image_thumbnail);
 
         nameTextInput = findViewById(R.id.name_text_input);
-        locationText_Input = findViewById(R.id.location_text_input);
         storyTextInput = findViewById(R.id.story_text_input);
 
         thumbnail = getIntent().getParcelableExtra("image_thumbnail");
 
-        mDisplayDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
-                int year = cal.get(Calendar.YEAR);
-                int month = cal.get(Calendar.MONTH);
-                int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        AddMemoryActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mDateSetListener,
-                        year, month, day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
-            }
-        });
-
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                Log.d(TAG, "onDateSet: mm/dd/yyy: " + month + "/" + day + "/" + year);
-
-                String date = month + "/" + day + "/" + year;
-                mTextDate.setText(date);
-            }
-        };
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
         buttonAddMemory = (Button) findViewById(R.id.button_add_memory);
         buttonAddMemory.setOnClickListener(new View.OnClickListener() {
@@ -111,6 +85,7 @@ public class AddMemoryActivity extends FragmentActivity {
         });
 
         displayThumbnail();
+        getLastKnownLocation();
     }
 
     @Override
@@ -139,12 +114,16 @@ public class AddMemoryActivity extends FragmentActivity {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        String strLat = Double.toString(currentLocation.getLatitude());
+        String strLong = Double.toString(currentLocation.getLongitude());
+        String strLocation = strLat + "," + strLong;
+
         ContentValues values = new ContentValues();
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE, nameTextInput.getText().toString());
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DESCRIPTION, storyTextInput.getText().toString());
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DATE_ADDED, "1-1-2000");
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE, bitmapToByteArray(thumbnail));
-        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, locationText_Input.getText().toString());
+        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, strLocation);
 
         db.insert(MemoryContract.MemoryEntry.TABLE_NAME, null, values);
     }
@@ -160,5 +139,17 @@ public class AddMemoryActivity extends FragmentActivity {
         }
 
         return stream.toByteArray();
+    }
+
+    private void getLastKnownLocation() {
+        fusedLocationProviderClient.getLastLocation()
+                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                    @Override
+                    public void onSuccess(Location location) {
+                        if (location != null) {
+                            currentLocation = location;
+                        }
+                    }
+                });
     }
 }
