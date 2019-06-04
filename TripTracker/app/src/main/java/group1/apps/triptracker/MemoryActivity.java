@@ -48,6 +48,18 @@ public class MemoryActivity extends FragmentActivity {
         startActivity(intent);
     }
 
+    private void c() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        db.execSQL(MemoryContract.SQL_CREATE_MEMORIES);
+    }
+
+    private void d() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        db.execSQL(MemoryContract.SQL_DELETE_MEMORIES);
+    }
+
     private void displayMemories() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 

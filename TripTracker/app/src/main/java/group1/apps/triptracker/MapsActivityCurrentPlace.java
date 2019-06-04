@@ -1,9 +1,12 @@
 package group1.apps.triptracker;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -12,12 +15,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -30,17 +31,6 @@ import com.google.android.libraries.maps.model.CameraPosition;
 import com.google.android.libraries.maps.model.LatLng;
 import com.google.android.libraries.maps.model.Marker;
 import com.google.android.libraries.maps.model.MarkerOptions;
-import com.google.android.libraries.places.api.Places;
-import com.google.android.libraries.places.api.model.Place;
-import com.google.android.libraries.places.api.model.PlaceLikelihood;
-import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest;
-import com.google.android.libraries.places.api.net.FindCurrentPlaceResponse;
-import com.google.android.libraries.places.api.net.PlacesClient;
-
-import java.util.Arrays;
-import java.util.List;
-
-import static com.google.android.apps.gmm.map.util.jni.NativeHelper.context;
 
 /**
  * An activity that displays a map showing the place at the device's current location.
@@ -53,7 +43,7 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
     private CameraPosition mCameraPosition;
 
     // The entry points to the Places API.
-    private PlacesClient mPlacesClient;
+//    private PlacesClient mPlacesClient;
 
     // The entry point to the Fused Location Provider.
     private FusedLocationProviderClient mFusedLocationProviderClient;
@@ -80,6 +70,8 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
     private String[] mLikelyPlaceAttributions;
     private LatLng[] mLikelyPlaceLatLngs;
 
+    private MemoryDbHelper dbHelper = new MemoryDbHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,9 +87,9 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
         String apiKey = getString(R.string.google_maps_key);
 
         // Initialize Places.
-        Places.initialize(context, apiKey);
+//        Places.initialize(context, apiKey);
         // Create a new Places client instance.
-        mPlacesClient = Places.createClient(this);
+//        mPlacesClient = Places.createClient(this);
 
         // Construct a FusedLocationProviderClient.
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -106,28 +98,6 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-    }
-
-    public void openMap() {
-        Intent intent = new Intent(this, MapsActivityCurrentPlace.class);
-        startActivity(intent);
-        this.finish();
-    }
-
-    public void openMemory() {
-        Intent intent = new Intent(this, MemoryActivity.class);
-        startActivity(intent);
-        this.finish();
-    }
-
-    public void openCamera() {
-    }
-
-    public void openProfile() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-        this.finish();
     }
 
     /**
@@ -160,13 +130,13 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
      * @param item The menu item to handle.
      * @return Boolean.
      */
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.option_get_place) {
-            showCurrentPlace();
-        }
-        return true;
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        if (item.getItemId() == R.id.option_get_place) {
+//            showCurrentPlace();
+//        }
+//        return true;
+//    }
 
     /**
      * Manipulates the map when it's available.
@@ -210,6 +180,9 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
 
         // Get the current location of the device and set the position of the map.
         getDeviceLocation();
+
+        // Show all the saved locations on the map
+        showSavedLocations();
     }
 
     /**
@@ -296,82 +269,82 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
      * Prompts the user to select the current place from a list of likely places, and shows the
      * current place on the map - provided the user has granted location permission.
      */
-    private void showCurrentPlace() {
-        if (mMap == null) {
-            return;
-        }
-
-        if (mLocationPermissionGranted) {
-            // Use fields to define the data types to return.
-            List<Place.Field> placeFields = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
-
-            // Get the likely places - that is, the businesses and other points of interest that
-            // are the best match for the device's current location.
-            @SuppressWarnings("MissingPermission") final FindCurrentPlaceRequest request =
-                    FindCurrentPlaceRequest.builder(placeFields).build();
-            Task<FindCurrentPlaceResponse> placeResponse = mPlacesClient.findCurrentPlace(request);
-            placeResponse.addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    FindCurrentPlaceResponse response = task.getResult();
-                    // Set the count, handling cases where less than 5 entries are returned.
-                    int count;
-                    if (response.getPlaceLikelihoods().size() < M_MAX_ENTRIES) {
-                        count = response.getPlaceLikelihoods().size();
-                    } else {
-                        count = M_MAX_ENTRIES;
-                    }
-
-                    int i = 0;
-                    mLikelyPlaceNames = new String[count];
-                    mLikelyPlaceAddresses = new String[count];
-                    mLikelyPlaceAttributions = new String[count];
-                    mLikelyPlaceLatLngs = new LatLng[count];
-
-                    for (PlaceLikelihood placeLikelihood : response.getPlaceLikelihoods()) {
-                        mLikelyPlaceNames[i] = placeLikelihood.getPlace().getName();
-                        mLikelyPlaceAddresses[i] = placeLikelihood.getPlace().getAddress();
-                        mLikelyPlaceAttributions[i] = (placeLikelihood.getPlace()
-                                .getAttributions() == null) ?
-                                null : placeLikelihood.getPlace().getAttributions().toString();
-                        mLikelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
-
-                        i++;
-                        if (i > (count - 1)) {
-                            break;
-                        }
-
-                        Log.i(TAG, String.format("Place '%s' has likelihood: %f",
-                                placeLikelihood.getPlace().getName(),
-                                placeLikelihood.getLikelihood()));
-                    }
-
-                    // Show a dialog offering the user the list of likely places, and add a
-                    // marker at the selected place.
-                    openPlacesDialog();
-
-                } else {
-                    Exception exception = task.getException();
-                    if (exception instanceof ApiException) {
-                        ApiException apiException = (ApiException) exception;
-                        Log.e(TAG, "Place not found: " + apiException.getStatusCode());
-                    }
-                }
-            });
-
-        } else {
-            // The user has not granted permission.
-            Log.i(TAG, "The user did not grant location permission.");
-
-            // Add a default marker, because the user hasn't selected a place.
-            mMap.addMarker(new MarkerOptions()
-                    .title(getString(R.string.default_info_title))
-                    .position(mDefaultLocation)
-                    .snippet(getString(R.string.default_info_snippet)));
-
-            // Prompt the user for permission.
-            getLocationPermission();
-        }
-    }
+//    private void showCurrentPlace() {
+//        if (mMap == null) {
+//            return;
+//        }
+//
+//        if (mLocationPermissionGranted) {
+//            // Use fields to define the data types to return.
+//            List<Place.Field> placeFields = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
+//
+//            // Get the likely places - that is, the businesses and other points of interest that
+//            // are the best match for the device's current location.
+//            @SuppressWarnings("MissingPermission") final FindCurrentPlaceRequest request =
+//                    FindCurrentPlaceRequest.builder(placeFields).build();
+//            Task<FindCurrentPlaceResponse> placeResponse = mPlacesClient.findCurrentPlace(request);
+//            placeResponse.addOnCompleteListener(task -> {
+//                if (task.isSuccessful()) {
+//                    FindCurrentPlaceResponse response = task.getResult();
+//                    // Set the count, handling cases where less than 5 entries are returned.
+//                    int count;
+//                    if (response.getPlaceLikelihoods().size() < M_MAX_ENTRIES) {
+//                        count = response.getPlaceLikelihoods().size();
+//                    } else {
+//                        count = M_MAX_ENTRIES;
+//                    }
+//
+//                    int i = 0;
+//                    mLikelyPlaceNames = new String[count];
+//                    mLikelyPlaceAddresses = new String[count];
+//                    mLikelyPlaceAttributions = new String[count];
+//                    mLikelyPlaceLatLngs = new LatLng[count];
+//
+//                    for (PlaceLikelihood placeLikelihood : response.getPlaceLikelihoods()) {
+//                        mLikelyPlaceNames[i] = placeLikelihood.getPlace().getName();
+//                        mLikelyPlaceAddresses[i] = placeLikelihood.getPlace().getAddress();
+//                        mLikelyPlaceAttributions[i] = (placeLikelihood.getPlace()
+//                                .getAttributions() == null) ?
+//                                null : placeLikelihood.getPlace().getAttributions().toString();
+//                        mLikelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
+//
+//                        i++;
+//                        if (i > (count - 1)) {
+//                            break;
+//                        }
+//
+//                        Log.i(TAG, String.format("Place '%s' has likelihood: %f",
+//                                placeLikelihood.getPlace().getName(),
+//                                placeLikelihood.getLikelihood()));
+//                    }
+//
+//                    // Show a dialog offering the user the list of likely places, and add a
+//                    // marker at the selected place.
+//                    openPlacesDialog();
+//
+//                } else {
+//                    Exception exception = task.getException();
+//                    if (exception instanceof ApiException) {
+//                        ApiException apiException = (ApiException) exception;
+//                        Log.e(TAG, "Place not found: " + apiException.getStatusCode());
+//                    }
+//                }
+//            });
+//
+//        } else {
+//            // The user has not granted permission.
+//            Log.i(TAG, "The user did not grant location permission.");
+//
+//            // Add a default marker, because the user hasn't selected a place.
+//            mMap.addMarker(new MarkerOptions()
+//                    .title(getString(R.string.default_info_title))
+//                    .position(mDefaultLocation)
+//                    .snippet(getString(R.string.default_info_snippet)));
+//
+//            // Prompt the user for permission.
+//            getLocationPermission();
+//        }
+//    }
 
     /**
      * Displays a form allowing the user to select a place from a list of likely places.
@@ -427,6 +400,31 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
             }
         } catch (SecurityException e) {
             Log.e("Exception: %s", e.getMessage());
+        }
+    }
+
+    private void showSavedLocations() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor cursor = db.query(
+                MemoryContract.MemoryEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        while (cursor.moveToNext()) {
+            String location = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION));
+
+            if (location != null) {
+                double latitude = Double.valueOf(location.substring(0, location.indexOf(",")));
+                double longtitude = Double.valueOf(location.substring(location.indexOf(",") + 1));
+
+                mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longtitude)));
+            }
         }
     }
 }

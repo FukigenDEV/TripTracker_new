@@ -1,32 +1,33 @@
 package group1.apps.triptracker;
 
-import android.app.DatePickerDialog;
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Calendar;
 
 public class AddMemoryActivity extends FragmentActivity {
 
@@ -49,11 +50,44 @@ public class AddMemoryActivity extends FragmentActivity {
     private FusedLocationProviderClient fusedLocationProviderClient;
     private Location currentLocation;
 
+    private LocationManager locationManager;
+    private final LocationListener locationListener = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {
+            currentLocation = location;
+
+            Log.d("543665", "onLocationChanged. location: " + currentLocation);
+        }
+
+        @Override
+        public void onStatusChanged(String s, int i, Bundle bundle) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String s) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String s) {
+
+        }
+    };
+
     //    code voor set date dialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_memory);
+
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 14);
+        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (!locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            buildAlertMessageNoGps();
+        } else if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            getLocation();
+        }
 
         mThumbnail = (ImageView) findViewById(R.id.image_thumbnail);
         mLayoutImageThumbnail = (ConstraintLayout) findViewById(R.id.layout_image_thumbnail);
@@ -85,7 +119,6 @@ public class AddMemoryActivity extends FragmentActivity {
         });
 
         displayThumbnail();
-        getLastKnownLocation();
     }
 
     @Override
@@ -112,18 +145,25 @@ public class AddMemoryActivity extends FragmentActivity {
             return;
         }
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        getLocation();
 
-        String strLat = Double.toString(currentLocation.getLatitude());
-        String strLong = Double.toString(currentLocation.getLongitude());
-        String strLocation = strLat + "," + strLong;
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE, nameTextInput.getText().toString());
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DESCRIPTION, storyTextInput.getText().toString());
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DATE_ADDED, "1-1-2000");
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE, bitmapToByteArray(thumbnail));
-        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, strLocation);
+
+        if (currentLocation != null) {
+            String strLat = Double.toString(currentLocation.getLatitude());
+            String strLong = Double.toString(currentLocation.getLongitude());
+            String strLocation = strLat + "," + strLong;
+
+            values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, strLocation);
+        } else {
+            Toast.makeText(this, "Current location could not be found...", Toast.LENGTH_LONG).show();
+        }
 
         db.insert(MemoryContract.MemoryEntry.TABLE_NAME, null, values);
     }
@@ -141,15 +181,41 @@ public class AddMemoryActivity extends FragmentActivity {
         return stream.toByteArray();
     }
 
-    private void getLastKnownLocation() {
-        fusedLocationProviderClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+    private void getLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 14);
+        } else {
+            Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+
+            if (location != null) {
+                currentLocation = new Location(LocationManager.GPS_PROVIDER);
+                currentLocation.setLatitude(location.getLatitude());
+                currentLocation.setLatitude(location.getLongitude());
+            } else {
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+            }
+        }
+    }
+
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Please turn on your gps connection")
+                .setCancelable(false)
+                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onSuccess(Location location) {
-                        if (location != null) {
-                            currentLocation = location;
-                        }
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+                    }
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
                     }
                 });
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
