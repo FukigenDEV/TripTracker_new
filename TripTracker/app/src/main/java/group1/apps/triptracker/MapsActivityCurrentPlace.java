@@ -421,9 +421,9 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
 
             if (location != null) {
                 double latitude = Double.valueOf(location.substring(0, location.indexOf(",")));
-                double longtitude = Double.valueOf(location.substring(location.indexOf(",") + 1));
+                double longitude = Double.valueOf(location.substring(location.indexOf(",") + 1));
 
-                mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longtitude)));
+                mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)));
             }
         }
     }

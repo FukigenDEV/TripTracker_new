@@ -28,6 +28,7 @@ import com.google.android.gms.location.LocationServices;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 public class AddMemoryActivity extends FragmentActivity {
 
@@ -147,6 +148,27 @@ public class AddMemoryActivity extends FragmentActivity {
 
         getLocation();
 
+        // if the location could not be found...
+        if (currentLocation == null) {
+            // ...try this:
+            currentLocation = getLastKnownLocation();
+
+            Log.d("7623492", "currentLocation is null and getLastKnownLocation() is executed");
+        }
+
+        // if the location is still null...
+        if (currentLocation == null) {
+            // ...the memory cannot be saved.
+            Toast.makeText(this, "Cannot save memory: location could not be found...", Toast.LENGTH_LONG).show();
+
+            Log.d("7623492", "currentLocation is null and cannot be found...");
+
+            return;
+        }
+
+        // at this point, the current location is not null and can be saved in the memory
+        Log.d("7623492", "currentLocation has been found: " + currentLocation);
+
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
@@ -155,15 +177,13 @@ public class AddMemoryActivity extends FragmentActivity {
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DATE_ADDED, "1-1-2000");
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE, bitmapToByteArray(thumbnail));
 
-        if (currentLocation != null) {
-            String strLat = Double.toString(currentLocation.getLatitude());
-            String strLong = Double.toString(currentLocation.getLongitude());
-            String strLocation = strLat + "," + strLong;
+        // get location data
+        String strLat = Double.toString(currentLocation.getLatitude());
+        String strLong = Double.toString(currentLocation.getLongitude());
+        // location is stored as a string, for example: ""
+        String strLocation = strLat + "," + strLong;
 
-            values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, strLocation);
-        } else {
-            Toast.makeText(this, "Current location could not be found...", Toast.LENGTH_LONG).show();
-        }
+        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, strLocation);
 
         db.insert(MemoryContract.MemoryEntry.TABLE_NAME, null, values);
     }
@@ -181,6 +201,7 @@ public class AddMemoryActivity extends FragmentActivity {
         return stream.toByteArray();
     }
 
+    // finds the current location ans stores the value in the global variable currentLocation
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -193,9 +214,30 @@ public class AddMemoryActivity extends FragmentActivity {
                 currentLocation.setLatitude(location.getLatitude());
                 currentLocation.setLatitude(location.getLongitude());
             } else {
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                // request the location every 5 seconds
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, locationListener);
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 5000, 0, locationListener);
             }
         }
+    }
+
+    private Location getLastKnownLocation() {
+        locationManager = (LocationManager)getApplicationContext().getSystemService(LOCATION_SERVICE);
+        List<String> providers = locationManager.getProviders(true);
+        Location bestLocation = null;
+
+        for (String provider : providers) {
+            Location l = locationManager.getLastKnownLocation(provider);
+            if (l == null) {
+                continue;
+            }
+            if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
+                // Found best last known location: %s", l);
+                bestLocation = l;
+            }
+        }
+
+        return bestLocation;
     }
 
     private void buildAlertMessageNoGps() {
