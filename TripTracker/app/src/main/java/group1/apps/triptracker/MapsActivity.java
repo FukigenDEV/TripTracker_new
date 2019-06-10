@@ -1,20 +1,15 @@
 package group1.apps.triptracker;
 
-import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -27,7 +22,6 @@ import com.google.android.libraries.maps.CameraUpdateFactory;
 import com.google.android.libraries.maps.GoogleMap;
 import com.google.android.libraries.maps.OnMapReadyCallback;
 import com.google.android.libraries.maps.SupportMapFragment;
-import com.google.android.libraries.maps.model.CameraPosition;
 import com.google.android.libraries.maps.model.LatLng;
 import com.google.android.libraries.maps.model.Marker;
 import com.google.android.libraries.maps.model.MarkerOptions;
@@ -35,12 +29,11 @@ import com.google.android.libraries.maps.model.MarkerOptions;
 /**
  * An activity that displays a map showing the place at the device's current location.
  */
-public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private static final String TAG = MapsActivityCurrentPlace.class.getSimpleName();
+    private static final String TAG = MapsActivity.class.getSimpleName();
 
     private GoogleMap mMap;
-    private CameraPosition mCameraPosition;
 
     // The entry points to the Places API.
 //    private PlacesClient mPlacesClient;
@@ -60,15 +53,7 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
     private Location mLastKnownLocation;
 
     // Keys for storing activity state.
-    private static final String KEY_CAMERA_POSITION = "camera_position";
     private static final String KEY_LOCATION = "location";
-
-    // Used for selecting the current place.
-    private static final int M_MAX_ENTRIES = 5;
-    private String[] mLikelyPlaceNames;
-    private String[] mLikelyPlaceAddresses;
-    private String[] mLikelyPlaceAttributions;
-    private LatLng[] mLikelyPlaceLatLngs;
 
     private MemoryDbHelper dbHelper = new MemoryDbHelper(this);
 
@@ -81,15 +66,7 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
         // Retrieve location and camera position from saved instance state.
         if (savedInstanceState != null) {
             mLastKnownLocation = savedInstanceState.getParcelable(KEY_LOCATION);
-            mCameraPosition = savedInstanceState.getParcelable(KEY_CAMERA_POSITION);
         }
-
-        String apiKey = getString(R.string.google_maps_key);
-
-        // Initialize Places.
-//        Places.initialize(context, apiKey);
-        // Create a new Places client instance.
-//        mPlacesClient = Places.createClient(this);
 
         // Construct a FusedLocationProviderClient.
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -99,44 +76,6 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
-
-    /**
-     * Saves the state of the map when the activity is paused.
-     */
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        if (mMap != null) {
-            outState.putParcelable(KEY_CAMERA_POSITION, mMap.getCameraPosition());
-            outState.putParcelable(KEY_LOCATION, mLastKnownLocation);
-            super.onSaveInstanceState(outState);
-        }
-    }
-
-    /**
-     * Sets up the options menu.
-     *
-     * @param menu The options menu.
-     * @return Boolean.
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.current_place_menu, menu);
-        return true;
-    }
-
-    /**
-     * Handles a click on the menu option to get a place.
-     *
-     * @param item The menu item to handle.
-     * @return Boolean.
-     */
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        if (item.getItemId() == R.id.option_get_place) {
-//            showCurrentPlace();
-//        }
-//        return true;
-//    }
 
     /**
      * Manipulates the map when it's available.
@@ -224,7 +163,6 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
         }
     }
 
-
     /**
      * Prompts the user for permission to use the device location.
      */
@@ -266,122 +204,6 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
     }
 
     /**
-     * Prompts the user to select the current place from a list of likely places, and shows the
-     * current place on the map - provided the user has granted location permission.
-     */
-//    private void showCurrentPlace() {
-//        if (mMap == null) {
-//            return;
-//        }
-//
-//        if (mLocationPermissionGranted) {
-//            // Use fields to define the data types to return.
-//            List<Place.Field> placeFields = Arrays.asList(Place.Field.NAME, Place.Field.ADDRESS, Place.Field.LAT_LNG);
-//
-//            // Get the likely places - that is, the businesses and other points of interest that
-//            // are the best match for the device's current location.
-//            @SuppressWarnings("MissingPermission") final FindCurrentPlaceRequest request =
-//                    FindCurrentPlaceRequest.builder(placeFields).build();
-//            Task<FindCurrentPlaceResponse> placeResponse = mPlacesClient.findCurrentPlace(request);
-//            placeResponse.addOnCompleteListener(task -> {
-//                if (task.isSuccessful()) {
-//                    FindCurrentPlaceResponse response = task.getResult();
-//                    // Set the count, handling cases where less than 5 entries are returned.
-//                    int count;
-//                    if (response.getPlaceLikelihoods().size() < M_MAX_ENTRIES) {
-//                        count = response.getPlaceLikelihoods().size();
-//                    } else {
-//                        count = M_MAX_ENTRIES;
-//                    }
-//
-//                    int i = 0;
-//                    mLikelyPlaceNames = new String[count];
-//                    mLikelyPlaceAddresses = new String[count];
-//                    mLikelyPlaceAttributions = new String[count];
-//                    mLikelyPlaceLatLngs = new LatLng[count];
-//
-//                    for (PlaceLikelihood placeLikelihood : response.getPlaceLikelihoods()) {
-//                        mLikelyPlaceNames[i] = placeLikelihood.getPlace().getName();
-//                        mLikelyPlaceAddresses[i] = placeLikelihood.getPlace().getAddress();
-//                        mLikelyPlaceAttributions[i] = (placeLikelihood.getPlace()
-//                                .getAttributions() == null) ?
-//                                null : placeLikelihood.getPlace().getAttributions().toString();
-//                        mLikelyPlaceLatLngs[i] = placeLikelihood.getPlace().getLatLng();
-//
-//                        i++;
-//                        if (i > (count - 1)) {
-//                            break;
-//                        }
-//
-//                        Log.i(TAG, String.format("Place '%s' has likelihood: %f",
-//                                placeLikelihood.getPlace().getName(),
-//                                placeLikelihood.getLikelihood()));
-//                    }
-//
-//                    // Show a dialog offering the user the list of likely places, and add a
-//                    // marker at the selected place.
-//                    openPlacesDialog();
-//
-//                } else {
-//                    Exception exception = task.getException();
-//                    if (exception instanceof ApiException) {
-//                        ApiException apiException = (ApiException) exception;
-//                        Log.e(TAG, "Place not found: " + apiException.getStatusCode());
-//                    }
-//                }
-//            });
-//
-//        } else {
-//            // The user has not granted permission.
-//            Log.i(TAG, "The user did not grant location permission.");
-//
-//            // Add a default marker, because the user hasn't selected a place.
-//            mMap.addMarker(new MarkerOptions()
-//                    .title(getString(R.string.default_info_title))
-//                    .position(mDefaultLocation)
-//                    .snippet(getString(R.string.default_info_snippet)));
-//
-//            // Prompt the user for permission.
-//            getLocationPermission();
-//        }
-//    }
-
-    /**
-     * Displays a form allowing the user to select a place from a list of likely places.
-     */
-    private void openPlacesDialog() {
-        // Ask the user to choose the place where they are now.
-        DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // The "which" argument contains the position of the selected item.
-                LatLng markerLatLng = mLikelyPlaceLatLngs[which];
-                String markerSnippet = mLikelyPlaceAddresses[which];
-                if (mLikelyPlaceAttributions[which] != null) {
-                    markerSnippet = markerSnippet + "\n" + mLikelyPlaceAttributions[which];
-                }
-
-                // Add a marker for the selected place, with an info window
-                // showing information about that place.
-                mMap.addMarker(new MarkerOptions()
-                        .title(mLikelyPlaceNames[which])
-                        .position(markerLatLng)
-                        .snippet(markerSnippet));
-
-                // Position the map's camera at the location of the marker.
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(markerLatLng,
-                        DEFAULT_ZOOM));
-            }
-        };
-
-        // Display the dialog.
-        AlertDialog dialog = new AlertDialog.Builder(this)
-                .setTitle(R.string.pick_place)
-                .setItems(mLikelyPlaceNames, listener)
-                .show();
-    }
-
-    /**
      * Updates the map's UI settings based on whether the user has granted location permission.
      */
     private void updateLocationUI() {
@@ -406,15 +228,7 @@ public class MapsActivityCurrentPlace extends FragmentActivity implements OnMapR
     private void showSavedLocations() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(
-                MemoryContract.MemoryEntry.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
+        Cursor cursor = db.query(MemoryContract.MemoryEntry.TABLE_NAME, null, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             String location = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION));

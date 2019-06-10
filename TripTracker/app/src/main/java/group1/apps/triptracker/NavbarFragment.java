@@ -50,25 +50,8 @@ public class NavbarFragment extends Fragment {
         }
     }
 
-    private View.OnClickListener getOnClickListener() {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v == nav_icon_map) {
-                    openMap();
-                } else if (v == nav_icon_timeline) {
-                    openMemory();
-                } else if (v == nav_icon_camera) {
-                    openCamera();
-                } else if (v == nav_icon_profile) {
-                    openProfile();
-                }
-            }
-        };
-    }
-
     public void openMap() {
-        startActivity(new Intent(activity, MapsActivityCurrentPlace.class));
+        startActivity(new Intent(activity, MapsActivity.class));
 
         activity.finish();
     }
@@ -89,5 +72,22 @@ public class NavbarFragment extends Fragment {
         startActivity(new Intent(activity, MainActivity.class));
 
         activity.finish();
+    }
+
+    private View.OnClickListener getOnClickListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v == nav_icon_map) {
+                    openMap();
+                } else if (v == nav_icon_timeline) {
+                    openMemory();
+                } else if (v == nav_icon_camera) {
+                    openCamera();
+                } else if (v == nav_icon_profile) {
+                    openProfile();
+                }
+            }
+        };
     }
 }

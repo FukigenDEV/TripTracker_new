@@ -20,24 +20,13 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mscAddMemory = (ImageView) findViewById(R.id.pf_memory_add);
-        mscAddMemory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAddMemory();
-            }
-        });
-
+        mscAddMemory = findViewById(R.id.pf_memory_add);
         pf_settings = findViewById(R.id.pf_settings);
-        pf_settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openChangeProfile();
-            }
-        });
-
         pf_name = findViewById(R.id.pf_name);
         pf_biography = findViewById(R.id.pf_biography);
+
+        mscAddMemory.setOnClickListener(getOnClickListener());
+        pf_settings.setOnClickListener(getOnClickListener());
 
         updateProfileInfo();
     }
@@ -66,5 +55,18 @@ public class MainActivity extends FragmentActivity {
 
         pf_name.setText(name);
         pf_biography.setText(biography);
+    }
+
+    private View.OnClickListener getOnClickListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view == mscAddMemory) {
+                    openAddMemory();
+                } else if (view == pf_settings) {
+                    openChangeProfile();
+                }
+            }
+        };
     }
 }

@@ -8,7 +8,6 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,12 +17,9 @@ import android.widget.TextView;
 
 public class MemoryActivity extends FragmentActivity {
 
-    private static final String TAG = "MemoryActivity";
-
     private MemoryDbHelper dbHelper = new MemoryDbHelper(this);
 
     private LinearLayout llScrollHolder;
-
     private Button mscAddMemory;
 
     @Override
@@ -31,15 +27,10 @@ public class MemoryActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_memory);
 
-        mscAddMemory = (Button) findViewById(R.id.button_new_memory);
-        mscAddMemory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openAddMemory();
-            }
-        });
+        mscAddMemory = findViewById(R.id.button_new_memory);
+        llScrollHolder = findViewById(R.id.ll_scroll_holder);
 
-        llScrollHolder = (LinearLayout) findViewById(R.id.ll_scroll_holder);
+        mscAddMemory.setOnClickListener(getOnClickListener());
 
         displayMemories();
     }
@@ -49,13 +40,13 @@ public class MemoryActivity extends FragmentActivity {
         startActivity(intent);
     }
 
-    private void c() {
+    private void createTable() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         db.execSQL(MemoryContract.SQL_CREATE_MEMORIES);
     }
 
-    private void d() {
+    private void deleteTable() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         db.execSQL(MemoryContract.SQL_DELETE_MEMORIES);
@@ -64,20 +55,12 @@ public class MemoryActivity extends FragmentActivity {
     private void displayMemories() {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Cursor cursor = db.query(
-                MemoryContract.MemoryEntry.TABLE_NAME,
-                null,
-                null,
-                null,
-                null,
-                null,
-                null
-        );
+        Cursor cursor = db.query(MemoryContract.MemoryEntry.TABLE_NAME, null, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
             String title = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE));
             String description = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DESCRIPTION));
-            String date = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DATE_ADDED));
+            String date = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DATE));
 
             byte[] imageByteArray = cursor.getBlob(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE));
             Bitmap image = byteArrayToBitmap(imageByteArray);
@@ -110,5 +93,16 @@ public class MemoryActivity extends FragmentActivity {
 
     private Bitmap byteArrayToBitmap(byte[] byteArray) {
         return BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+    }
+
+    private View.OnClickListener getOnClickListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view == mscAddMemory) {
+                    openAddMemory();
+                }
+            }
+        };
     }
 }

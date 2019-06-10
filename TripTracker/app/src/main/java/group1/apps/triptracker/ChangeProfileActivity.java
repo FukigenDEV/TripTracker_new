@@ -5,18 +5,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 public class ChangeProfileActivity extends FragmentActivity {
 
-    private ImageView imvPhoto;
     private EditText etName;
     private EditText etBiography;
-    private ImageView imvLocation;
     private Button btnChangeProfile;
 
     @Override
@@ -24,7 +20,6 @@ public class ChangeProfileActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_profile);
 
-        imvPhoto = findViewById(R.id.imvPhoto);
         etName = findViewById(R.id.etName);
         etBiography = findViewById(R.id.etBiography);
         btnChangeProfile = findViewById(R.id.btnChangeProfile);

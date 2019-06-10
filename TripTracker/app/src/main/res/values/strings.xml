@@ -14,11 +14,11 @@
     <string name="pick_place">Choose a place</string>
 
     <string name="name_header">NAME</string>
-    <string name="name">Francis of the Filth</string>
+    <string name="name_placeholder">Name placeholder</string>
     <string name="memory_header">MEMORIES</string>
     <string name="biography_header">BIOGRAPHY</string>
-    <string name="biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a volutpat eros, nec ornare orci. Proin pharetra neque ac nisi interdum, vel aliquet justo iaculis. Nunc dapibus nulla ac urna condimentum porta. Nullam purus ante, interdum at mollis in, finibus ac ante. Proin vel odio purus. Phasellus pharetra sem id lectus euismod lacinia. Aenean placerat arcu ac convallis scelerisque.</string>
-    <string name="am_photo_action_desc">ADD/TAKE PHOTO</string>
+    <string name="biography_placeholder">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In a volutpat eros, nec ornare orci. Proin pharetra neque ac nisi interdum, vel aliquet justo iaculis. Nunc dapibus nulla ac urna condimentum porta. Nullam purus ante, interdum at mollis in, finibus ac ante. Proin vel odio purus. Phasellus pharetra sem id lectus euismod lacinia. Aenean placerat arcu ac convallis scelerisque.</string>
+    <string name="am_photo_action_desc">TAKE PHOTO</string>
     <string name="am_name_field_header">TITLE</string>
     <string name="am_text_fields_header">MEMORY</string>
     <string name="am_location_field_header">LOCATION</string>
@@ -29,11 +29,13 @@
     <string name="m_memories_header">MEMORIES</string>
     <string name="m_new_memory">NEW MEMORY</string>
 
-    <string name="title_activity_change_profile">Change profile</string>
     <string name="profile_name">profile_name_key</string>
     <string name="profile_biography">profile_biography_key</string>
     <string name="cp_text_fields_header">EDIT PROFILE</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_image_specified">Memory not saved: no image specified&#8230;</string>
+    <string name="location_not_found">Memory not saved: location not found&#8230;</string>
+    <string name="turn_on_gps">Please turn on your GPS.</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 </resources>

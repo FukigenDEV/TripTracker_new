@@ -23,9 +23,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -35,23 +32,17 @@ import java.util.List;
 
 public class AddMemoryActivity extends FragmentActivity {
 
-    private static final String TAG = "AddMemoryActivity";
-
     private MemoryDbHelper dbHelper = new MemoryDbHelper(this);
 
-    //    variables voor set date dialog
     private ImageView mThumbnail;
     private ConstraintLayout mLayoutImageThumbnail;
     private ConstraintLayout mLayoutAddPhoto;
-
     private EditText nameTextInput;
     private EditText storyTextInput;
-
     private Button buttonAddMemory;
 
     private Bitmap thumbnail;
 
-    private FusedLocationProviderClient fusedLocationProviderClient;
     private Location currentLocation;
 
     private LocationManager locationManager;
@@ -79,7 +70,6 @@ public class AddMemoryActivity extends FragmentActivity {
         }
     };
 
-    //    code voor set date dialog
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,34 +83,17 @@ public class AddMemoryActivity extends FragmentActivity {
             getLocation();
         }
 
-        mThumbnail = (ImageView) findViewById(R.id.image_thumbnail);
-        mLayoutImageThumbnail = (ConstraintLayout) findViewById(R.id.layout_image_thumbnail);
-
+        mThumbnail = findViewById(R.id.image_thumbnail);
+        mLayoutImageThumbnail = findViewById(R.id.layout_image_thumbnail);
         nameTextInput = findViewById(R.id.name_text_input);
         storyTextInput = findViewById(R.id.story_text_input);
+        buttonAddMemory = findViewById(R.id.button_add_memory);
+        mLayoutAddPhoto = findViewById(R.id.layout_add_photo);
 
         thumbnail = getIntent().getParcelableExtra("image_thumbnail");
 
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-        buttonAddMemory = (Button) findViewById(R.id.button_add_memory);
-        buttonAddMemory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveMemory();
-
-                finish();
-                startActivity(new Intent(AddMemoryActivity.this, MainActivity.class));
-            }
-        });
-
-        mLayoutAddPhoto = (ConstraintLayout) findViewById(R.id.layout_add_photo);
-        mLayoutAddPhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(AddMemoryActivity.this, CameraActivity.class));
-            }
-        });
+        buttonAddMemory.setOnClickListener(getOnClickListener());
+        mLayoutAddPhoto.setOnClickListener(getOnClickListener());
 
         displayThumbnail();
     }
@@ -144,7 +117,7 @@ public class AddMemoryActivity extends FragmentActivity {
 
     private void saveMemory() {
         if (thumbnail == null) {
-            Toast.makeText(this, "Memory not saved: no image specified...", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.no_image_specified), Toast.LENGTH_LONG).show();
 
             return;
         }
@@ -154,15 +127,15 @@ public class AddMemoryActivity extends FragmentActivity {
         // if the location could not be found...
         if (currentLocation == null) {
             // ...try this:
-            currentLocation = getLastKnownLocation();
+            currentLocation = getBestLocation();
 
-            Log.d("7623492", "currentLocation is null and getLastKnownLocation() is executed");
+            Log.d("7623492", "currentLocation is null and getBestLocation() is executed");
         }
 
         // if the location is still null...
         if (currentLocation == null) {
             // ...the memory cannot be saved.
-            Toast.makeText(this, "Cannot save memory: location could not be found...", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, getString(R.string.location_not_found), Toast.LENGTH_LONG).show();
 
             Log.d("7623492", "currentLocation is null and cannot be found...");
 
@@ -182,7 +155,7 @@ public class AddMemoryActivity extends FragmentActivity {
         ContentValues values = new ContentValues();
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE, nameTextInput.getText().toString());
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DESCRIPTION, storyTextInput.getText().toString());
-        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DATE_ADDED, currentDate);
+        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DATE, currentDate);
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE, bitmapToByteArray(thumbnail));
 
         // get location data
@@ -209,7 +182,7 @@ public class AddMemoryActivity extends FragmentActivity {
         return stream.toByteArray();
     }
 
-    // finds the current location ans stores the value in the global variable currentLocation
+    // finds the current location and stores the value in the global variable currentLocation
     private void getLocation() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -229,7 +202,7 @@ public class AddMemoryActivity extends FragmentActivity {
         }
     }
 
-    private Location getLastKnownLocation() {
+    private Location getBestLocation() {
         locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
         List<String> providers = locationManager.getProviders(true);
         Location bestLocation = null;
@@ -240,7 +213,6 @@ public class AddMemoryActivity extends FragmentActivity {
                 continue;
             }
             if (bestLocation == null || l.getAccuracy() < bestLocation.getAccuracy()) {
-                // Found best last known location: %s", l);
                 bestLocation = l;
             }
         }
@@ -250,15 +222,15 @@ public class AddMemoryActivity extends FragmentActivity {
 
     private void buildAlertMessageNoGps() {
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Please turn on your gps connection")
+        builder.setMessage(getString(R.string.turn_on_gps))
                 .setCancelable(false)
-                .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         startActivity(new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS));
                     }
                 })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         dialogInterface.cancel();
@@ -267,5 +239,21 @@ public class AddMemoryActivity extends FragmentActivity {
 
         final AlertDialog dialog = builder.create();
         dialog.show();
+    }
+
+    private View.OnClickListener getOnClickListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view == buttonAddMemory) {
+                    saveMemory();
+
+                    finish();
+                    startActivity(new Intent(AddMemoryActivity.this, MainActivity.class));
+                } else if (view == mLayoutAddPhoto) {
+                    startActivity(new Intent(AddMemoryActivity.this, CameraActivity.class));
+                }
+            }
+        };
     }
 }
