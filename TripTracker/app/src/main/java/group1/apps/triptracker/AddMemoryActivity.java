@@ -28,6 +28,9 @@ import com.google.android.gms.location.LocationServices;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class AddMemoryActivity extends FragmentActivity {
@@ -171,10 +174,15 @@ public class AddMemoryActivity extends FragmentActivity {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = new Date();
+
+        String currentDate = dateFormat.format(date);
+
         ContentValues values = new ContentValues();
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE, nameTextInput.getText().toString());
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DESCRIPTION, storyTextInput.getText().toString());
-        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DATE_ADDED, "1-1-2000");
+        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DATE_ADDED, currentDate);
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE, bitmapToByteArray(thumbnail));
 
         // get location data
@@ -222,7 +230,7 @@ public class AddMemoryActivity extends FragmentActivity {
     }
 
     private Location getLastKnownLocation() {
-        locationManager = (LocationManager)getApplicationContext().getSystemService(LOCATION_SERVICE);
+        locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
         List<String> providers = locationManager.getProviders(true);
         Location bestLocation = null;
 

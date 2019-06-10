@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 public class MemoryActivity extends FragmentActivity {
@@ -76,6 +77,8 @@ public class MemoryActivity extends FragmentActivity {
         while (cursor.moveToNext()) {
             String title = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE));
             String description = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DESCRIPTION));
+            String date = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DATE_ADDED));
+
             byte[] imageByteArray = cursor.getBlob(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE));
             Bitmap image = byteArrayToBitmap(imageByteArray);
 
@@ -89,10 +92,15 @@ public class MemoryActivity extends FragmentActivity {
             TextView txvTitle = (TextView) constraintLayoutChild.getChildAt(0);
             txvTitle.setText(title);
 
-            NestedScrollView nestedScrollView = (NestedScrollView) constraintLayoutChild.getChildAt(1);
+            ScrollView scrollView = (ScrollView) constraintLayoutChild.getChildAt(1);
 
-            TextView txvDescription = (TextView) nestedScrollView.getChildAt(0);
+            LinearLayout linearLayout = (LinearLayout) scrollView.getChildAt(0);
+
+            TextView txvDescription = (TextView) linearLayout.getChildAt(0);
             txvDescription.setText(description);
+
+            TextView txvDate = (TextView) linearLayout.getChildAt(1);
+            txvDate.setText(date);
 
             llScrollHolder.addView(view);
         }
