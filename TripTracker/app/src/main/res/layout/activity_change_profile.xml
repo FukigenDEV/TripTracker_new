@@ -13,41 +13,8 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.constraint.ConstraintLayout
-                android:id="@+id/layout_add_photo"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="30dp"
-                android:background="#FFF"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/camera_icon"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="25dp"
-                    android:layout_marginEnd="8dp"
-                    android:src="@drawable/ic_camera_add_memory"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:text="@string/am_photo_action_desc"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/camera_icon" />
-
-            </android.support.constraint.ConstraintLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
