@@ -132,19 +132,6 @@ public class AddMemoryActivity extends FragmentActivity {
             Log.d("7623492", "currentLocation is null and getBestLocation() is executed");
         }
 
-        // if the location is still null...
-        if (currentLocation == null) {
-            // ...the memory cannot be saved.
-            Toast.makeText(this, getString(R.string.location_not_found), Toast.LENGTH_LONG).show();
-
-            Log.d("7623492", "currentLocation is null and cannot be found...");
-
-            return;
-        }
-
-        // at this point, the current location is not null and can be saved in the memory
-        Log.d("7623492", "currentLocation has been found: " + currentLocation);
-
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -158,13 +145,17 @@ public class AddMemoryActivity extends FragmentActivity {
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_DATE, currentDate);
         values.put(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE, bitmapToByteArray(thumbnail));
 
-        // get location data
-        String strLat = Double.toString(currentLocation.getLatitude());
-        String strLong = Double.toString(currentLocation.getLongitude());
-        // location is stored as a string, for example: ""
-        String strLocation = strLat + "," + strLong;
+        if (currentLocation != null) {
+            // get location data
+            String strLat = Double.toString(currentLocation.getLatitude());
+            String strLong = Double.toString(currentLocation.getLongitude());
+            // location is stored as a string, for example: ""
+            String strLocation = strLat + "," + strLong;
 
-        values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, strLocation);
+            values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, strLocation);
+        } else {
+            Toast.makeText(this, getString(R.string.location_not_found), Toast.LENGTH_LONG).show();
+        }
 
         db.insert(MemoryContract.MemoryEntry.TABLE_NAME, null, values);
     }

@@ -34,7 +34,7 @@
     <string name="cp_text_fields_header">EDIT PROFILE</string>
 
     <string name="no_image_specified">Memory not saved: no image specified&#8230;</string>
-    <string name="location_not_found">Memory not saved: location not found&#8230;</string>
+    <string name="location_not_found">Location not found&#8230;</string>
     <string name="turn_on_gps">Please turn on your GPS.</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
