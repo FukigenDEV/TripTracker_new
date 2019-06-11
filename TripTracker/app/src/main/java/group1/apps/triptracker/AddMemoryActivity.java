@@ -240,7 +240,7 @@ public class AddMemoryActivity extends FragmentActivity {
                     saveMemory();
 
                     finish();
-                    startActivity(new Intent(AddMemoryActivity.this, MainActivity.class));
+                    startActivity(new Intent(AddMemoryActivity.this, MemoryActivity.class));
                 } else if (view == mLayoutAddPhoto) {
                     startActivity(new Intent(AddMemoryActivity.this, CameraActivity.class));
                 }
