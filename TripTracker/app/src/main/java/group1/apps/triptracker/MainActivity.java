@@ -14,6 +14,7 @@ public class MainActivity extends FragmentActivity {
     private TextView pf_name;
     private TextView pf_biography;
     private ImageView mscAddMemory;
+    private ImageView pf_memory_more;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +25,11 @@ public class MainActivity extends FragmentActivity {
         pf_settings = findViewById(R.id.pf_settings);
         pf_name = findViewById(R.id.pf_name);
         pf_biography = findViewById(R.id.pf_biography);
+        pf_memory_more = findViewById(R.id.pf_memory_more);
 
         mscAddMemory.setOnClickListener(getOnClickListener());
         pf_settings.setOnClickListener(getOnClickListener());
+        pf_memory_more.setOnClickListener(getOnClickListener());
 
         updateProfileInfo();
     }
@@ -48,6 +51,11 @@ public class MainActivity extends FragmentActivity {
         startActivity(intent);
     }
 
+    public void openMoreMemories() {
+        Intent intent = new Intent(this, MemoryActivity.class);
+        startActivity(intent);
+    }
+
     public void updateProfileInfo() {
         SharedPreferences sharedPreferences = getSharedPreferences(getString(R.string.preference_file_key), MODE_PRIVATE);
         String name = sharedPreferences.getString(getString(R.string.profile_name), "Name");
@@ -65,6 +73,8 @@ public class MainActivity extends FragmentActivity {
                     openAddMemory();
                 } else if (view == pf_settings) {
                     openChangeProfile();
+                } else if (view == pf_memory_more) {
+                    openMoreMemories();
                 }
             }
         };

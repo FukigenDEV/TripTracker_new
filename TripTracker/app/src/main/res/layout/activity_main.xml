@@ -272,7 +272,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/pf_memory_content_2_4"
         app:layout_constraintEnd_toEndOf="@+id/pf_memory_content_2_4" />
 
-
     <android.support.constraint.ConstraintLayout
         android:id="@+id/layout_nav"
         android:layout_width="match_parent"
