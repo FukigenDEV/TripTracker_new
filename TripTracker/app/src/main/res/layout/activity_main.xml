@@ -291,7 +291,7 @@
         <fragment
             android:id="@+id/fragment_navbar"
             android:name="group1.apps.triptracker.NavbarFragment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
