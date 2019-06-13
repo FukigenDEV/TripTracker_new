@@ -38,4 +38,6 @@
     <string name="turn_on_gps">Please turn on your GPS.</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+
+    <string name="share_link"><u>Share >>></u></string>
 </resources>

@@ -8,12 +8,14 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MemoryActivity extends FragmentActivity {
 
@@ -58,6 +60,7 @@ public class MemoryActivity extends FragmentActivity {
         Cursor cursor = db.query(MemoryContract.MemoryEntry.TABLE_NAME, null, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
+            String id = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry._ID));
             String title = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE));
             String description = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DESCRIPTION));
             String date = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DATE));
@@ -72,18 +75,22 @@ public class MemoryActivity extends FragmentActivity {
 
             ConstraintLayout constraintLayoutChild = (ConstraintLayout) view.getChildAt(2);
 
-            TextView txvTitle = (TextView) constraintLayoutChild.getChildAt(0);
+            NestedScrollView nestedScrollView = (NestedScrollView) constraintLayoutChild.getChildAt(0);
+
+            LinearLayout linearLayout = (LinearLayout) nestedScrollView.getChildAt(0);
+
+            TextView txvTitle = (TextView) linearLayout.getChildAt(0);
             txvTitle.setText(title);
 
-            ScrollView scrollView = (ScrollView) constraintLayoutChild.getChildAt(1);
-
-            LinearLayout linearLayout = (LinearLayout) scrollView.getChildAt(0);
-
-            TextView txvDescription = (TextView) linearLayout.getChildAt(0);
+            TextView txvDescription = (TextView) linearLayout.getChildAt(1);
             txvDescription.setText(description);
 
-            TextView txvDate = (TextView) linearLayout.getChildAt(1);
+            TextView txvDate = (TextView) linearLayout.getChildAt(2);
             txvDate.setText(date);
+
+            TextView txvShare = (TextView) linearLayout.getChildAt(3);
+            txvShare.setOnClickListener(getShareButtonOnClickListener());
+            txvShare.setTag(id);
 
             llScrollHolder.addView(view);
         }
@@ -101,6 +108,40 @@ public class MemoryActivity extends FragmentActivity {
             public void onClick(View view) {
                 if (view == mscAddMemory) {
                     openAddMemory();
+                }
+            }
+        };
+    }
+
+    private View.OnClickListener getShareButtonOnClickListener() {
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TextView clickedTextView = (TextView) view;
+                String tag = clickedTextView.getTag().toString();
+
+                SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+                Cursor cursor = db.query(MemoryContract.MemoryEntry.TABLE_NAME, null, null, null, null, null, null);
+
+                // Go through every row
+                while (cursor.moveToNext()) {
+                    String id = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry._ID));
+
+                    // If the id matches the TextView's tag, we found the right memory
+                    if (id.equals(tag)) {
+                        String title = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE));
+                        String description = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DESCRIPTION));
+                        String date = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DATE));
+
+                        byte[] imageByteArray = cursor.getBlob(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_IMAGE));
+                        Bitmap image = byteArrayToBitmap(imageByteArray);
+
+                        // You can do something with the title, description, date and image here...
+
+                        // Memory has been found, so we break the loop
+                        break;
+                    }
                 }
             }
         };
