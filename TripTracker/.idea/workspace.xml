@@ -21,11 +21,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b507766-e1ab-4cb9-87e9-cb8fe36cf5ba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_memory.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_memory.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/memory_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/memory_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_navigate_next_black_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_navigate_next_white_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,34 +46,28 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/memory_item.xml">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="448">
+              <caret line="176" column="1" lean-forward="true" selection-start-line="176" selection-start-column="1" selection-end-line="176" selection-end-column="1" />
               <folding>
-                <element signature="e#4417#4437#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#2898#2899#0" expanded="true" />
+                <element signature="e#2967#2968#0" expanded="true" />
+                <element signature="e#3635#3674#0" expanded="true" />
+                <element signature="e#3741#3773#0" expanded="true" />
+                <element signature="e#3839#3876#0" expanded="true" />
               </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer2" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_memory.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="39">
-              <caret line="35" selection-start-line="35" selection-end-line="35" />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="329">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,12 +76,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_navigate_next_white_24dp.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="43" selection-start-line="43" selection-end-line="43" />
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            </state>
+          </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -159,7 +162,6 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/gradle.properties" />
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_person_black_24dp.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MapsActivityCurrentPlace.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryContract.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/NavbarFragment.java" />
@@ -174,8 +176,10 @@
         <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/AddMemoryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_memory.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/memory_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/drawable/ic_navigate_next_black_24dp.xml" />
       </list>
     </option>
   </component>
@@ -215,6 +219,12 @@
               <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="drawable" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
             <path>
               <item name="TripTracker" type="1abcf292:AndroidViewProjectNode" />
@@ -363,7 +373,7 @@
       <window_info id="Build Variants" order="3" side_tool="true" />
       <window_info id="Image Layers" order="4" />
       <window_info id="Designer" order="5" />
-      <window_info content_ui="combo" id="Project" order="6" visible="true" weight="0.22014925" />
+      <window_info active="true" content_ui="combo" id="Project" order="6" visible="true" weight="0.22014925" />
       <window_info id="Resources Explorer" order="7" weight="0.32995737" />
       <window_info id="Favorites" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="0" sideWeight="0.565032" visible="true" weight="0.33044422" />
@@ -382,7 +392,7 @@
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info active="true" anchor="right" id="Preview" order="5" visible="true" weight="0.32942432" />
+      <window_info anchor="right" id="Preview" order="5" visible="true" weight="0.32942432" />
       <window_info anchor="right" x="1719" y="202" width="165" height="52" id="Attributes" order="6" type="FLOATING" />
       <window_info anchor="right" id="Assistant" order="7" weight="0.32995737" />
     </layout>
@@ -424,9 +434,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="Error fix + nav update" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_launcher_background.xml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-fragment/27.1.1/94732bda44fba11302c58e459b7c1f47e7521bf9/support-fragment-27.1.1-sources.jar!/android/support/v4/app/FragmentActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1165">
@@ -597,9 +604,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="448">
+          <caret line="176" column="1" lean-forward="true" selection-start-line="176" selection-start-column="1" selection-end-line="176" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2898#2899#0" expanded="true" />
+            <element signature="e#2967#2968#0" expanded="true" />
+            <element signature="e#3635#3674#0" expanded="true" />
+            <element signature="e#3741#3773#0" expanded="true" />
+            <element signature="e#3839#3876#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -641,19 +654,6 @@
           <caret line="37" lean-forward="true" selection-start-line="37" selection-end-line="37" />
           <folding>
             <element signature="e#1990#2020#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
-          <folding>
-            <element signature="e#3516#3542#0" expanded="true" />
-            <element signature="e#5286#5317#0" expanded="true" />
-            <element signature="e#6365#6388#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -713,16 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="80" lean-forward="true" selection-start-line="80" selection-end-line="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/memory_item.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
@@ -730,6 +720,31 @@
           <folding>
             <element signature="e#4417#4437#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/group1/apps/triptracker/MemoryActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="329">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_navigate_next_white_24dp.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
