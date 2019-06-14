@@ -1,13 +1,20 @@
 package group1.apps.triptracker;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.Button;
@@ -15,7 +22,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.ByteArrayOutputStream;
+
 public class MemoryActivity extends FragmentActivity {
+    private static final int REQUEST_WRITE = 1;
 
     private MemoryDbHelper dbHelper = new MemoryDbHelper(this);
 
@@ -33,6 +43,21 @@ public class MemoryActivity extends FragmentActivity {
         mscAddMemory.setOnClickListener(getOnClickListener());
 
         displayMemories();
+
+        if (ContextCompat.checkSelfPermission(MemoryActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            // ask camera permission
+            ActivityCompat.requestPermissions(MemoryActivity.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_WRITE);
+            // if the permission is granted
+        } else if (ContextCompat.checkSelfPermission(MemoryActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+            // open camera
+        }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
     public void openAddMemory() {
@@ -112,6 +137,7 @@ public class MemoryActivity extends FragmentActivity {
     }
 
     private View.OnClickListener getShareButtonOnClickListener() {
+
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,6 +162,13 @@ public class MemoryActivity extends FragmentActivity {
                         Bitmap image = byteArrayToBitmap(imageByteArray);
 
                         // You can do something with the title, description, date and image here...
+                        Intent sendIntent = new Intent();
+                        sendIntent.setAction(Intent.ACTION_SEND);
+                        sendIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, description);
+                        sendIntent.setType("*/*");
+                        sendIntent.putExtra(Intent.EXTRA_STREAM, getImageUri(MemoryActivity.this, image));
+                        startActivity(sendIntent);
 
                         // Memory has been found, so we break the loop
                         break;
