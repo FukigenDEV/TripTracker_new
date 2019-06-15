@@ -112,10 +112,11 @@ public class MainActivity extends FragmentActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         Cursor cursor = db.query(MemoryContract.MemoryEntry.TABLE_NAME, null, null, null, null, null, null);
+        cursor.moveToLast();
 
         int counter = 1;
 
-        while (cursor.moveToNext()) {
+        do {
             if (counter > 8) {
                 break;
             }
@@ -152,6 +153,7 @@ public class MainActivity extends FragmentActivity {
 
             counter++;
         }
+        while (cursor.moveToPrevious());
 
         cursor.close();
     }
