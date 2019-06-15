@@ -35,7 +35,6 @@
 
     <string name="memory_no_title_or_description">Please specify both a title and a description</string>
     <string name="no_image_specified">Memory not saved: no image specified&#8230;</string>
-    <string name="location_not_found">Location not found&#8230;</string>
     <string name="turn_on_gps">Please turn on your GPS.</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>

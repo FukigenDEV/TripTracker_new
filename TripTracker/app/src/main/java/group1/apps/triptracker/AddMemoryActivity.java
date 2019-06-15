@@ -157,8 +157,6 @@ public class AddMemoryActivity extends FragmentActivity {
             String strLocation = strLat + "," + strLong;
 
             values.put(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION, strLocation);
-        } else {
-            Toast.makeText(this, getString(R.string.location_not_found), Toast.LENGTH_LONG).show();
         }
 
         db.insert(MemoryContract.MemoryEntry.TABLE_NAME, null, values);
