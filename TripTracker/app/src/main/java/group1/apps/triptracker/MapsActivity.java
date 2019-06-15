@@ -231,13 +231,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Cursor cursor = db.query(MemoryContract.MemoryEntry.TABLE_NAME, null, null, null, null, null, null);
 
         while (cursor.moveToNext()) {
+            String title = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_TITLE));
+            String date = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_DATE));
             String location = cursor.getString(cursor.getColumnIndex(MemoryContract.MemoryEntry.COLUMN_NAME_LOCATION));
 
             if (location != null) {
                 double latitude = Double.valueOf(location.substring(0, location.indexOf(",")));
                 double longitude = Double.valueOf(location.substring(location.indexOf(",") + 1));
 
-                mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)));
+                Marker marker = mMap.addMarker(new MarkerOptions().position(new LatLng(latitude, longitude)));
+                marker.setTitle(title);
+                marker.setSnippet(date);
             }
         }
     }
