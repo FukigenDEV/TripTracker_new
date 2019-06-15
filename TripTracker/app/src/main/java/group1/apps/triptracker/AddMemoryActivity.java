@@ -92,6 +92,10 @@ public class AddMemoryActivity extends FragmentActivity {
 
         thumbnail = getIntent().getParcelableExtra("image_thumbnail");
 
+        if (thumbnail == null) {
+            startActivity(new Intent(AddMemoryActivity.this, CameraActivity.class));
+        }
+
         buttonAddMemory.setOnClickListener(getOnClickListener());
         mLayoutAddPhoto.setOnClickListener(getOnClickListener());
 
