@@ -237,10 +237,14 @@ public class AddMemoryActivity extends FragmentActivity {
             @Override
             public void onClick(View view) {
                 if (view == buttonAddMemory) {
-                    saveMemory();
+                    if (nameTextInput.getText().toString().equals("") || storyTextInput.getText().toString().equals("")) {
+                        Toast.makeText(AddMemoryActivity.this, getString(R.string.memory_no_title_or_description), Toast.LENGTH_LONG).show();
+                    } else {
+                        saveMemory();
 
-                    finish();
-                    startActivity(new Intent(AddMemoryActivity.this, MemoryActivity.class));
+                        finish();
+                        startActivity(new Intent(AddMemoryActivity.this, MemoryActivity.class));
+                    }
                 } else if (view == mLayoutAddPhoto) {
                     startActivity(new Intent(AddMemoryActivity.this, CameraActivity.class));
                 }
