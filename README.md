@@ -1,3 +1,3 @@
 # TripTracker
 Project B repository
-GEEN RACISTISCHE OF SEKISTISCHE VARIABELEN OF NAMEN
+
