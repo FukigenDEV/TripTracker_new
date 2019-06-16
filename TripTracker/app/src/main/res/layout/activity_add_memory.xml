@@ -8,7 +8,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="90dp"
         android:orientation="vertical">
 
         <android.support.constraint.ConstraintLayout
@@ -42,6 +42,7 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
+                    android:textColor="#000"
                     android:text="@string/am_photo_action_desc"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +87,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:textColor="#FFF"
                     android:text="@string/am_text_fields_header"
                     app:layout_constraintStart_toStartOf="@id/text_fields_header_holder"
                     app:layout_constraintTop_toTopOf="@id/text_fields_header_holder" />
@@ -93,7 +95,7 @@
                 <ImageView
                     android:id="@+id/text_fields_holder"
                     android:layout_width="match_parent"
-                    android:layout_height="480dp"
+                    android:layout_height="415dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="32dp"
@@ -109,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:textColor="#000"
                     android:text="@string/am_name_field_header"
                     app:layout_constraintStart_toStartOf="@id/text_fields_holder"
                     app:layout_constraintTop_toTopOf="@id/text_fields_holder" />
@@ -129,6 +132,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
+                    android:textColor="#000"
                     android:text="@string/am_story_field_header"
                     app:layout_constraintStart_toStartOf="@id/text_fields_holder"
                     app:layout_constraintTop_toBottomOf="@id/name_text_input" />
@@ -139,7 +143,10 @@
                     android:layout_height="210dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginEnd="16dp"
-                    android:inputType="text"
+                    android:inputType="textMultiLine"
+                    android:maxLines="9"
+                    android:lines="9"
+                    android:gravity="top"
                     app:layout_constraintStart_toStartOf="@id/text_fields_holder"
                     app:layout_constraintTop_toBottomOf="@id/text_story" />
 

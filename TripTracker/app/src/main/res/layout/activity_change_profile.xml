@@ -56,6 +56,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:textColor="#FFF"
                     android:text="@string/cp_text_fields_header"
                     app:layout_constraintStart_toStartOf="@id/text_fields_header_holder"
                     app:layout_constraintTop_toTopOf="@id/text_fields_header_holder" />
@@ -77,6 +78,7 @@
                     android:id="@+id/text_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#000"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:text="NAME"
@@ -99,6 +101,7 @@
                     android:id="@+id/text_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:textColor="#000"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:text="BIOGRAPHY"
