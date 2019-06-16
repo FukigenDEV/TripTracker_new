@@ -51,6 +51,7 @@
 
                 <TextView
                     android:id="@+id/memory_title_1"
+                    android:textColor="#000"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -66,6 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:textColor="#000"
                     android:text="Suspendisse sed odio ultrices nulla ultrices ullamcorper. Morbi ut bibendum nunc, eu lacinia ante. Vestibulum venenatis diam vel justo malesuada sagittis. Nam semper maximus augue, sit amet eleifend quam ultrices a. Suspendisse pellentesque hendrerit purus, sit amet consequat enim mattis non. Fusce maximus finibus volutpat. Sed sed nunc nec urna mollis euismod ut sed sem. Vestibulum id lectus sed sem suscipit vestibulum eget pellentesque nibh. Etiam libero urna, convallis a elementum a, lacinia sit amet velit. Ut scelerisque est tellus, non mattis sapien feugiat eu."
                     android:textSize="12sp"
                     tools:ignore="HardcodedText" />
@@ -75,6 +77,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:textColor="#000"
                     android:text="Unknown date"
                     android:textSize="12sp"
                     android:textStyle="italic"
@@ -84,6 +87,7 @@
                     android:id="@+id/memory_share"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="#000"
                     android:layout_gravity="end"
                     android:layout_marginStart="8dp"
                     android:text="@string/share_link"
